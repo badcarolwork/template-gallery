@@ -1,0 +1,17 @@
+.filter_cat{
+    display:flex;
+    margin-bottom:0.5rem;
+    span{
+        width:20%;
+    }
+    .col-md-10{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    label{
+        padding-right:2rem;
+    }
+}
+.card-text{
+    font-size:0.85rem;
+}
