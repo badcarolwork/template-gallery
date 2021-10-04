@@ -17,7 +17,7 @@ const Showcase = () => {
     let filter_list = [];
 
     const getData = async () => {
-        const res = await fetch("https://spreadsheets.google.com/feeds/list/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/1/public/values?alt=json")
+        const res = await fetch("https://spreadsheets.google.com/feeds/list/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/2/public/values?alt=json")
         const data = await res.json()
         setshowcaseList(data.feed.entry)
     }
