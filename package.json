@@ -16,6 +16,10 @@
     "sass": "^1.32.6",
     "web-vitals": "^1.1.2"
   },
+  "engines": {
+    "node": "15.6.0",
+    "npm": "7.4.0"
+},
   "scripts": {
     "predeploy": "npm run build ",
     "deploy": "gh-pages -d build",
