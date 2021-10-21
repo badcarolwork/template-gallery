@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performics Taiwan - Ad demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
+        html,
+        body {
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        img {
+            width: 95%;
+            height: auto;
+        }
+
+
+        #mobile_frame {
+            margin: auto;
+            position: relative;
+            width: 335px;
+            height: 667px;
+            background-image: url(https://github.com/pixelsign/html5-device-mockups/blob/master/device-mockups/iPhoneX/portrait.png?raw=true);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .mobile-img {
+            position: absolute;
+            margin: auto;
+            z-index: 999;
+            overflow: hidden;
+            background-image: url(https://github.com/pixelsign/html5-device-mockups/blob/master/device-mockups/iPhoneX/portrait.png?raw=true);
+            background-size: 335px 667px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+        }
+
+        #mobile-img-l {
+            width: 32px;
+            height: 202px;
+            left: 0;
+            bottom: 0;
+        }
+
+        #mobile-img-r {
+            width: 52px;
+            height: 202px;
+            right: 0;
+            bottom: 0;
+            background-position: right bottom;
+
+        }
+
+        #mobile-img-b {
+            width: 335px;
+            height: 30px;
+            left: 0;
+            right: 0;
+            bottom: 1px;
+            background-position: left bottom;
+
+        }
+
+        #content {
+            position: absolute;
+            width: 294px;
+            height: 1200px;
+            max-height: 640px;
+            /* padding: 20px 30px 20px 30px; */
+            overflow-y: scroll;
+            top: 10px;
+            left: 20px;
+            z-index: 99;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+            /* make scrollbar transparent */
+        }
+
+        iframe {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+            overflow: hidden;
+            visibility: visible !important;
+
+        }
+
+        header {
+            text-align: center;
+            color: #1E9A4B;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        header span {
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>置底影音廣告 Sticky Video Ad</h1>
+        <span>滑動文章展開廣告</span>
+    </header>
+    <div id="mobile_frame">
+        <div id="mobile-img-l" class="mobile-img"></div>
+        <div id="mobile-img-r" class="mobile-img"></div>
+        <div id="mobile-img-b" class="mobile-img"></div>
+        <div id="content">
+            <iframe src="https://storage.googleapis.com/pfx_template_demo/ad.html" scrollbar="no"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,29 +1,41 @@
-body, html {
-  margin: 0;  
-  padding:0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size:0.9rem;
+  font-size: 0.9rem;
+  overflow: hidden;
 }
-h5{
-  font-size:1rem;
+h5 {
+  font-size: 1rem;
 }
 
 /*** PFX Styling ***/
-.container-fluid{
-  padding:0 !important
+main {
+  display: inline-flex;
 }
-.header{
-  background-image:url("./img/headerbg.png");
-  background-image:url("./img/headerbg.png"), linear-gradient(135deg, #62c7ed 0%, #1e9a4b 100%) ; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height:40vh;
+nav.sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: grey;
 }
-.home-title {
-  height:25vh;
+div.main.content-right {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+div.filter-container {
+  padding: 5vh 3vw;
+  margin-bottom: 3vh;
+}
+div.content-bottom {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+div.filter-container {
+  position: fixed;
 }
