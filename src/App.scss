@@ -15,13 +15,46 @@ h5 {
 }
 
 /*** PFX Styling ***/
+$nav-button-left: 21px;
+
 main {
   display: inline-flex;
 }
 nav.sidebar {
   width: 280px;
   height: 100vh;
-  background-color: grey;
+  background: linear-gradient(135deg, #62c7ed 0%, #1e9a4b 100%);
+  padding: 20px 0 0 20px;
+
+  #nav-group {
+    margin-top: 20%;
+
+    button {
+      text-align: left;
+      padding-left: 20px;
+      margin-left: -$nav-button-left !important;
+      border: 0;
+      background: rgba(0, 0, 0, 0);
+      margin: 0;
+      display: block;
+      margin-bottom: 5%;
+      color: #fff;
+      width: calc(100% + #{$nav-button-left});
+      min-height: 50px;
+
+      &.active {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #1e9a4b;
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 9px;
+    color: #fff;
+  }
 }
 div.main.content-right {
   display: flex;

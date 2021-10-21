@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Gallery from "./components/gallery/Gallery";
-import Showcase from "./components/showcase/Showcase";
+import Gallery from "./pages/gallery/Gallery";
+import Showcase from "./pages/showcase/Showcase";
 import "./App.scss";
 import logo from "./img/performics_logo_white.svg";
 
@@ -21,28 +21,29 @@ const App = () => {
     <main>
       <nav id="sidebar" className="sidebar">
         <div className="sidebar-content js-simplebar">
-          <nav className="navbar">
-            <img src={logo} className="logo" width="200" alt="logo" />
-          </nav>
+          <div className="navbar mb-4">
+            <img src={logo} className="logo" width="170" alt="logo" />
+          </div>
           <div className="home-title d-flex text-white">
             <div className="align-self-center">
-              <div className="fs-3">Rich Media</div>
-              <div className="fs-1">創意數位廣告</div>
+              <div className="fs-3">創意數位廣告</div>
+              <div className="fs-5">Rich Media Gallery</div>
             </div>
-            <div>
-              <button
-                onClick={renderGallery}
-                className="m-4 btn btn-outline-primary"
-              >
-                Rich Media Template
-              </button>
-              <button
-                onClick={renderShowcase}
-                className="m-4 btn btn-outline-primary"
-              >
-                Showcase
-              </button>
-            </div>
+          </div>
+
+          <div id="nav-group">
+            <button onClick={renderGallery} className="active">
+              互動廣告 <br />
+              Intreactive Display Ad
+            </button>
+            <button onClick={renderShowcase} className="">
+              互動影音廣告 <br />
+              Interactive Video Ad
+            </button>
+            <button onClick={renderShowcase} className="">
+              廣告案例演示 <br />
+              Showcase
+            </button>
           </div>
           <footer>
             <span className="fw-light">© 2019 Performics | Privacy Policy</span>

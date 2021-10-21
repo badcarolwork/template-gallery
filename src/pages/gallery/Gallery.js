@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import FilterBarComponent from "../../components/filterBar/filterBarComponent";
 import "./gallery.scss";
 
 const Gallery = () => {
@@ -57,35 +58,7 @@ const Gallery = () => {
         <ClipLoader color={color} size={180}></ClipLoader>
       ) : (
         <div className="row">
-          <div className="ad-type-container">
-            <span>互動廣告 Display/ Interactive Ad</span>
-            <span> | </span>
-            <span>互動影音 Interactive Video Ad</span>
-          </div>
-          <div className="filter-container">
-            <label>廣告格式: </label>
-            <select>
-              {gallery.map((value, key) => {
-                return (
-                  <option key={key} value={value.tempname}>
-                    {value.tempname}
-                  </option>
-                );
-              })}
-            </select>
-
-            <label>類型類型: </label>
-            <select>
-              <option value="instream">Display</option>
-              <option value="outstream">互動影音</option>
-            </select>
-
-            <label>支援裝置: </label>
-            <select>
-              <option value="pc">桌機.PC</option>
-              <option value="mobile">行動裝置.手機</option>
-            </select>
-          </div>
+          <FilterBarComponent />
           {gallery.map((value, key) => {
             return (
               <div
