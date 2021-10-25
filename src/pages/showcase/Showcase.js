@@ -16,7 +16,8 @@ const Showcase = () => {
 
   const getData = async () => {
     const res = await fetch(
-      "https://spreadsheets.google.com/feeds/list/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/2/public/values?alt=json"
+      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
+        process.env.REACT_APP_API_KEY
     );
     const data = await res.json();
     setshowcaseList(data.feed.entry);

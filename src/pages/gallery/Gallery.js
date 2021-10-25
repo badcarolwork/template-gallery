@@ -58,11 +58,14 @@ const Gallery = () => {
         <ClipLoader color={color} size={180}></ClipLoader>
       ) : (
         <div className="row">
-          <FilterBarComponent />
+          <FilterBarComponent data={gallery} />
           {gallery.map((value, key) => {
             return (
               <div
-                className="col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch d-flex flex-column align-items-stretch"
+                className={
+                  value.tempid +
+                  " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch d-flex flex-column align-items-stretch"
+                }
                 key={key}
               >
                 <img
