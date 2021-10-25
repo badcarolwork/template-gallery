@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Gallery from "./pages/gallery/Gallery";
 import Showcase from "./pages/showcase/Showcase";
 import "./App.scss";
@@ -17,6 +18,7 @@ const App = () => {
     setshowShowcase(true);
     setshowGallery(false);
   };
+
   return (
     <main>
       <nav id="sidebar" className="sidebar">
@@ -44,6 +46,7 @@ const App = () => {
               廣告案例演示 <br />
               Showcase
             </button>
+            <a href="/adDemoPage/adhesion/ad.html">Sticky Ad Demo</a>
           </div>
           <footer>
             <span className="fw-light">© 2019 Performics | Privacy Policy</span>
