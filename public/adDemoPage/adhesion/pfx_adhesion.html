@@ -13,7 +13,6 @@
         body {
             font-size: 14px;
             font-family: 'Montserrat', sans-serif;
-            padding: 4vh 17vw;
         }
 
         img {
@@ -69,12 +68,39 @@
 
         }
 
+        #mobile-img-tl {
+            width: 32px;
+            height: 202px;
+            left: 0;
+            top: 0;
+            background-position: left top;
+        }
+
+        #mobile-img-tr {
+            width: 52px;
+            height: 202px;
+            right: 0;
+            top: 0;
+            background-position: right top;
+
+        }
+
+        #mobile-img-tb {
+            width: 335px;
+            height: 30px;
+            left: 0;
+            right: 0;
+            top: 1px;
+            background-position: left top;
+
+        }
+
         #content {
             position: absolute;
             width: 294px;
             height: 1200px;
-            max-height: 640px;
-            /* padding: 20px 30px 20px 30px; */
+            max-height: 624px;
+           padding-top:11px;
             overflow-y: scroll;
             top: 10px;
             left: 20px;
@@ -107,6 +133,9 @@
         <span>滑動文章展開廣告</span>
     </header>
     <div id="mobile_frame">
+        <div id="mobile-img-tl" class="mobile-img"></div>
+        <div id="mobile-img-tr" class="mobile-img"></div>
+        <div id="mobile-img-tb" class="mobile-img"></div>
         <div id="mobile-img-l" class="mobile-img"></div>
         <div id="mobile-img-r" class="mobile-img"></div>
         <div id="mobile-img-b" class="mobile-img"></div>

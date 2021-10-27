@@ -7,4 +7,23 @@
   padding: 20px 30px !important;
   margin-top: -$filter-bar-top !important;
   z-index: 9999;
+
+  label {
+    font-size: 14px;
+  }
+  select {
+    min-width: 150px;
+  }
+  button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #1e9a4b;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    font-weight: 300;
+    color: #1e9a4b;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
 }

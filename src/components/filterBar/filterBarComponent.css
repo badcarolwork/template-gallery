@@ -9,6 +9,11 @@ html {
   overflow: hidden;
 }
 
+button {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0;
+}
+
 h5 {
   font-size: 1rem;
 }
@@ -26,6 +31,7 @@ nav.sidebar {
   background: linear-gradient(135deg, #62c7ed 0%, #1e9a4b 100%);
   padding: 20px 0 0 20px;
   z-index: 10000;
+  color: #fff;
 }
 
 nav.sidebar #nav-group {
@@ -80,5 +86,28 @@ div.content-bottom {
   padding: 20px 30px !important;
   margin-top: -100px !important;
   z-index: 9999;
+}
+
+.filter-container label {
+  font-size: 14px;
+}
+
+.filter-container select {
+  min-width: 150px;
+}
+
+.filter-container button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #1e9a4b;
+  border-radius: 0.12em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 300;
+  color: #1e9a4b;
+  text-align: center;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 /*# sourceMappingURL=filterBarComponent.css.map */

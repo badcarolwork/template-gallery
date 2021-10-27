@@ -10,6 +10,11 @@ html {
   font-size: 0.9rem;
   overflow: hidden;
 }
+button {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0;
+}
+
 h5 {
   font-size: 1rem;
 }
@@ -27,6 +32,7 @@ nav.sidebar {
   background: linear-gradient(135deg, #62c7ed 0%, #1e9a4b 100%);
   padding: 20px 0 0 20px;
   z-index: 10000;
+  color: #fff;
 
   #nav-group {
     margin-top: 20%;

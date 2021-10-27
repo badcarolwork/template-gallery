@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import Gallery from "./pages/gallery/Gallery";
 import Showcase from "./pages/showcase/Showcase";
 import "./App.scss";
