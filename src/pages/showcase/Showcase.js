@@ -14,15 +14,6 @@ const Showcase = () => {
   let filter_brand = [];
   let filter_list = [];
 
-  const getData = async () => {
-    const res = await fetch(
-      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
-        process.env.REACT_APP_API_KEY
-    );
-    const data = await res.json();
-    setshowcaseList(data.feed.entry);
-  };
-
   const filterDataArr = () => {
     for (var i = 0; i < showcaseList.length; i++) {
       filter_platform.push(showcaseList[i].gsx$platform.$t);
@@ -46,14 +37,24 @@ const Showcase = () => {
   };
 
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      getData();
-      setLoading(true);
-    }
-    return function cleanup() {
-      mounted = false;
+    const getAPI = function () {
+      fetch(
+        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
+          process.env.REACT_APP_API_KEY
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          filterDataArr(res);
+          setLoading(true);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setTimeout(() => {
+            getAPI();
+          }, 1000);
+        });
     };
+    getAPI();
   }, []);
 
   filterDataArr();

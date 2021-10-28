@@ -7,27 +7,11 @@ const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
+  const [selectedValue, setSelectedValue] = useState([]);
 
-  const getData = async () => {
-    const res = await fetch(
-      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
-        process.env.REACT_APP_API_KEY
-    );
-
-    if (res.ok) {
-      const data = await res.json();
-      filterDataGallery(data);
-      setLoading(true);
-    } else {
-      console.log("error handling thinking how to do");
-      setLoading(false);
-      setTimeout(getData, 1000);
-    }
-  };
-
-  const filterDataGallery = (getdata) => {
-    let keys = getdata.values[0];
-    let newData = getdata.values.slice(1, getdata.values.length);
+  const filterDataGallery = (resData) => {
+    let keys = resData.values[0];
+    let newData = resData.values.slice(1, resData.values.length);
 
     let formatted = [],
       data = newData,
@@ -40,16 +24,41 @@ const Gallery = () => {
       formatted.push(o);
     }
     setGallery(formatted);
+    setLoading(true);
   };
 
+  function sorting(v) {
+    let values = [];
+
+    values.push(v);
+    setSelectedValue(values);
+    setTimeout(() => {
+      console.log(selectedValue);
+    }, 1000);
+
+    const containers = document.querySelectorAll(
+      'div[ data-filter="data_container"]'
+    );
+  }
+
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      getData();
-    }
-    return function cleanup() {
-      mounted = false;
+    const getAPI = function () {
+      fetch(
+        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
+          process.env.REACT_APP_API_KEY
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          filterDataGallery(res);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setTimeout(() => {
+            getAPI();
+          }, 1000);
+        });
     };
+    getAPI();
   }, []);
 
   return (
@@ -58,7 +67,8 @@ const Gallery = () => {
         <ClipLoader color={color} size={180}></ClipLoader>
       ) : (
         <div className="row">
-          <FilterBarComponent />
+          <FilterBarComponent handleSorting={sorting} />
+
           {gallery.map((value, key) => {
             return (
               <div
@@ -66,6 +76,7 @@ const Gallery = () => {
                   value.tempid +
                   " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch d-flex flex-column align-items-stretch"
                 }
+                data-filter={value.filtercategory}
                 key={key}
               >
                 <img

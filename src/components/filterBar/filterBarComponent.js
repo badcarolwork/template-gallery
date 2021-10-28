@@ -4,24 +4,6 @@ import "./filterBarComponent.scss";
 const FilterBarComponent = (props) => {
   // clean the database
   const [filterdata, setFilterdata] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getfilterdata = async () => {
-    const res = await fetch(
-      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/filterbar?alt=json&key=" +
-        process.env.REACT_APP_API_KEY
-    );
-
-    if (res.ok) {
-      const data = await res.json();
-      sortFilterData(data);
-      setLoading(true);
-    } else {
-      console.log("if error will retrive the API");
-      setLoading(false);
-      setTimeout(getfilterdata, 1000);
-    }
-  };
 
   const sortFilterData = (getdata) => {
     // console.log(data);
@@ -42,13 +24,23 @@ const FilterBarComponent = (props) => {
   };
 
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      getfilterdata();
-    }
-    return function cleanup() {
-      mounted = false;
+    const getAPI = function () {
+      fetch(
+        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/filterbar?alt=json&key=" +
+          process.env.REACT_APP_API_KEY
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          sortFilterData(res);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setTimeout(() => {
+            getAPI();
+          }, 1000);
+        });
     };
+    getAPI();
   }, []);
 
   function handleFilterClick(e) {
@@ -59,17 +51,13 @@ const FilterBarComponent = (props) => {
         selectedOptions.push(checkboxs[i].value);
 
         if (selectedOptions.length > 0) {
-          handleSorting(selectedOptions);
+          props.handleSorting(selectedOptions);
         } else {
           alert("請選擇欲瀏覽的分類");
           return;
         }
       }
     }
-  }
-
-  function handleSorting(value) {
-    console.log(value);
   }
 
   return (
