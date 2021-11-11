@@ -25,6 +25,7 @@ $filter-bar-top: 100px;
 
 main {
   display: inline-flex;
+  width: 100%;
 }
 nav.sidebar {
   width: 280px;
@@ -66,7 +67,7 @@ nav.sidebar {
 }
 div.main.content-right {
   display: flex;
-  width: 100%;
+  width: calc(100% - 280px);
   height: 100vh;
 }
 

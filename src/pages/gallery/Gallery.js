@@ -28,17 +28,29 @@ const Gallery = () => {
   };
 
   function sorting(v) {
-    let values = [];
+    const containers = document.querySelectorAll('div[name="data_container"]');
 
-    values.push(v);
-    setSelectedValue(values);
-    setTimeout(() => {
-      console.log(selectedValue);
-    }, 1000);
+    let classes = "\\b(" + v.join("|") + ")\\b",
+      dimenRegex = new RegExp(classes, "i");
+    console.log(dimenRegex);
+    containers.forEach((eContainer) => {
+      let elClasses =
+        " " + eContainer.getAttribute("class").replace(/\s+/, " ") + " ";
 
-    const containers = document.querySelectorAll(
-      'div[ data-filter="data_container"]'
-    );
+      setTimeout(() => {
+        if (v.length > 0) {
+          if (dimenRegex.test(elClasses)) {
+            console.log("dsa");
+            eContainer.style.display = "flex";
+          } else {
+            eContainer.style.display = "none";
+            console.log("2222");
+          }
+        } else {
+          eContainer.style.display = "flex";
+        }
+      }, 500);
+    });
   }
 
   useEffect(() => {
@@ -63,20 +75,23 @@ const Gallery = () => {
 
   return (
     <div className="content-bottom">
+      <FilterBarComponent handleSorting={sorting} />
       {!loading ? (
         <ClipLoader color={color} size={180}></ClipLoader>
       ) : (
-        <div className="row">
-          <FilterBarComponent handleSorting={sorting} />
-
+        <div className="grid-layout row">
           {gallery.map((value, key) => {
+            let filtercategory = value.filtercategory.replace(/,/g, " ");
             return (
               <div
                 className={
                   value.tempid +
-                  " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch d-flex flex-column align-items-stretch"
+                  " " +
+                  filtercategory +
+                  " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
                 }
-                data-filter={value.filtercategory}
+                name="data_container"
+                data-filter={filtercategory}
                 key={key}
               >
                 <img

@@ -4,4 +4,14 @@
   height: 400px;
   margin: auto;
 }
+
+.gallery-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.grid-layout {
+  padding: 0 1rem;
+}
 /*# sourceMappingURL=gallery.css.map */
