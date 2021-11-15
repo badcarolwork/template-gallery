@@ -88,7 +88,11 @@ const FilterBarComponent = (props) => {
 
   return (
     <div className="filter-container row">
-      <div className="col-md-2" onClick={handleExpand}>
+      <div
+        className="col-md-2"
+        style={{ cursor: "pointer" }}
+        onClick={handleExpand}
+      >
         <i className="fas fa-filter pe-1"></i>
         進階選項 Filter by
         <i id="toggle-icon" className="fas fa-angle-down ps-3"></i>

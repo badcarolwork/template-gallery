@@ -7,7 +7,6 @@ const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
-  const [selectedValue, setSelectedValue] = useState([]);
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -28,6 +27,7 @@ const Gallery = () => {
   };
 
   function sorting(v) {
+    setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
 
     let classes = "\\b(" + v.join("|") + ")\\b",
@@ -38,9 +38,9 @@ const Gallery = () => {
         " " + eContainer.getAttribute("class").replace(/\s+/, " ") + " ";
 
       setTimeout(() => {
+        setLoading(true);
         if (v.length > 0) {
           if (dimenRegex.test(elClasses)) {
-            console.log("dsa");
             eContainer.style.display = "flex";
           } else {
             eContainer.style.display = "none";
@@ -104,7 +104,7 @@ const Gallery = () => {
                   <h5 className="card-title">{value.tempname}</h5>
                   <div className="card-text">{value.desc}</div>
                 </div>
-                <div className="card-text mt-auto align-self-start ps-3 pb-2">
+                <div className="card-text mt-auto align-self-start pb-2">
                   {value.devicepc === "TRUE" ? (
                     <i className="fas fa-desktop pc me-3 text-black-50 fs-4"></i>
                   ) : null}
@@ -112,18 +112,16 @@ const Gallery = () => {
                     <i className="fas fa-mobile-alt mobile text-black-50 fs-4"></i>
                   ) : null}
                 </div>
-                <div className="card-text mt-auto align-self-start ps-3">
+                <div className="card-text mt-auto align-self-start">
                   <a
                     href={value.demolink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="btn btn-primary text-white">
-                      嘗試範例
-                    </button>
+                    <button className="btn btn-primary">嘗試範例</button>
                   </a>
                   <button
-                    className="btn btn-outline-primary ms-3"
+                    className="btn btn-secondary ms-3"
                     data-temp={value.tempid}
                   >
                     案例參考
