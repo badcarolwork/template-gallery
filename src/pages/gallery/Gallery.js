@@ -6,6 +6,7 @@ import "./gallery.scss";
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [gifActive, setGifActive] = useState(false);
   let [color] = useState("#1E9A4B");
 
   const filterDataGallery = (resData) => {
@@ -53,6 +54,22 @@ const Gallery = () => {
     });
   }
 
+  function handleShowGifDemo(e) {
+    var parent = e.currentTarget.parentNode.id;
+    var staticImg = document.querySelector("#" + parent + " .rmThumb");
+    var playIcon = document.querySelector("#" + parent + " .show-gif");
+
+    if (staticImg.classList.contains("active")) {
+      setGifActive(false);
+      staticImg.classList.remove("active");
+      playIcon.style.display = "block";
+    } else {
+      setGifActive(true);
+      staticImg.classList.add("active");
+      playIcon.style.display = "none";
+    }
+  }
+
   useEffect(() => {
     const getAPI = function () {
       fetch(
@@ -84,6 +101,7 @@ const Gallery = () => {
             let filtercategory = value.filtercategory.replace(/,/g, " ");
             return (
               <div
+                id={value.tempid}
                 className={
                   value.tempid +
                   " " +
@@ -91,15 +109,22 @@ const Gallery = () => {
                   " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
                 }
                 name="data_container"
-                data-filter={filtercategory}
-                key={key}
+                key={value.tempid}
               >
                 <img
-                  src={value.previmg}
+                  src={gifActive ? value.prevgif : value.previmg}
                   alt="pfxrichmedia"
                   className="card-img-top rmThumb"
                   loading="lazy"
                 />
+
+                <div className="show-gif" onClick={handleShowGifDemo}>
+                  <i
+                    className={
+                      gifActive ? "far fa-pause-circle" : "far fa-play-circle"
+                    }
+                  ></i>
+                </div>
                 <div className="card-body text-start">
                   <h5 className="card-title">{value.tempname}</h5>
                   <div className="card-text">{value.desc}</div>

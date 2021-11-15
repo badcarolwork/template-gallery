@@ -6,7 +6,25 @@
 }
 .gallery-box {
   display: flex;
+  position: relative;
 }
 .grid-layout {
   padding: 0 1rem;
+
+  .show-gif {
+    position: absolute;
+    z-index: 1;
+    bottom: 14rem;
+    left: 8rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 3rem;
+    padding: 0.1rem 0.2rem;
+    text-align: center;
+    cursor: pointer;
+    i {
+      font-size: 3rem;
+      align-self: center;
+      color: #434343;
+    }
+  }
 }
