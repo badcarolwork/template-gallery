@@ -14,17 +14,24 @@
   .show-gif {
     position: absolute;
     z-index: 1;
-    bottom: 14rem;
-    left: 8rem;
-    background-color: rgba(255, 255, 255, 0.7);
+    top: 21.5rem;
+    left: 8.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 3rem;
     padding: 0.1rem 0.2rem;
     text-align: center;
     cursor: pointer;
     i {
-      font-size: 3rem;
+      font-size: 2rem;
       align-self: center;
-      color: #434343;
+      color: #04d257;
+    }
+  }
+}
+div.active {
+  div.show-gif {
+    i {
+      opacity: 0.5;
     }
   }
 }

@@ -6,7 +6,6 @@ import "./gallery.scss";
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [gifActive, setGifActive] = useState(false);
   let [color] = useState("#1E9A4B");
 
   const filterDataGallery = (resData) => {
@@ -30,10 +29,9 @@ const Gallery = () => {
   function sorting(v) {
     setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
-
-    let classes = "\\b(" + v.join("|") + ")\\b",
+    let classes = "\\b(" + v.join(" ") + ")\\b",
       dimenRegex = new RegExp(classes, "i");
-    console.log(dimenRegex);
+
     containers.forEach((eContainer) => {
       let elClasses =
         " " + eContainer.getAttribute("class").replace(/\s+/, " ") + " ";
@@ -46,27 +44,36 @@ const Gallery = () => {
           } else {
             eContainer.style.display = "none";
             console.log("2222");
+            // console.log(eContainer);
           }
-        } else {
-          eContainer.style.display = "flex";
         }
       }, 500);
     });
   }
 
   function handleShowGifDemo(e) {
-    var parent = e.currentTarget.parentNode.id;
-    var staticImg = document.querySelector("#" + parent + " .rmThumb");
-    var playIcon = document.querySelector("#" + parent + " .show-gif");
+    const parent = e.currentTarget.parentNode.id;
+    const imgSrc = document.querySelector("div#" + parent + " > img.rmThumb");
+    const playIcon = document.querySelector(
+      "div#" + parent + " > .show-gif > i"
+    );
+    const staticImgSrc = e.currentTarget.getAttribute("data-staticsrc");
+    const gifImgSrc = e.currentTarget.getAttribute("data-gifsrc");
 
-    if (staticImg.classList.contains("active")) {
-      setGifActive(false);
-      staticImg.classList.remove("active");
-      playIcon.style.display = "block";
+    //far fa-pause-circle
+    // );
+    // console.log(playIcon);
+
+    if (e.currentTarget.parentNode.classList.contains("active")) {
+      e.currentTarget.parentNode.classList.remove("active");
+      imgSrc.setAttribute("src", staticImgSrc);
+      playIcon.classList.remove("fa-pause-circle");
+      playIcon.classList.add("fa-play-circle");
     } else {
-      setGifActive(true);
-      staticImg.classList.add("active");
-      playIcon.style.display = "none";
+      e.currentTarget.parentNode.classList.add("active");
+      imgSrc.setAttribute("src", gifImgSrc);
+      playIcon.classList.add("fa-pause-circle");
+      playIcon.classList.remove("fa-play-circle");
     }
   }
 
@@ -112,18 +119,19 @@ const Gallery = () => {
                 key={value.tempid}
               >
                 <img
-                  src={gifActive ? value.prevgif : value.previmg}
+                  src={value.previmg}
                   alt="pfxrichmedia"
-                  className="card-img-top rmThumb"
+                  className={value.tempid + " card-img-top rmThumb"}
                   loading="lazy"
                 />
 
-                <div className="show-gif" onClick={handleShowGifDemo}>
-                  <i
-                    className={
-                      gifActive ? "far fa-pause-circle" : "far fa-play-circle"
-                    }
-                  ></i>
+                <div
+                  className="show-gif"
+                  onClick={handleShowGifDemo}
+                  data-staticsrc={value.previmg}
+                  data-gifsrc={value.prevgif}
+                >
+                  <i className="far fa-play-circle"></i>
                 </div>
                 <div className="card-body text-start">
                   <h5 className="card-title">{value.tempname}</h5>
