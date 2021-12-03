@@ -82,6 +82,7 @@ div.content-bottom {
   padding-top: 100px;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .btn {
@@ -101,5 +102,12 @@ div.content-bottom {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #52c27a;
   color: #3c3c3c;
+}
+
+.alert-box {
+  padding: 2rem 1rem;
+  border: 1px solid #52c27a;
+  width: 100%;
+  text-align: center;
 }
 /*# sourceMappingURL=App.css.map */

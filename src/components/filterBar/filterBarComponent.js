@@ -53,19 +53,18 @@ const FilterBarComponent = (props) => {
 
   function handleFilterClick(e) {
     const checkboxs = document.querySelectorAll(".filter-option");
-    let selectedOptions = [];
+    const container = document.querySelector(".filter-container");
+    const icon = document.getElementById("toggle-icon");
 
+    let selectedOptions = [];
+    container.classList.remove("expand");
+    icon.classList.add("fa-angle-down");
+    icon.classList.remove("fa-angle-up");
     for (let i = 0; i < checkboxs.length; i++) {
       const selectedVal = checkboxs[i].getAttribute("value");
       if (checkboxs[i].classList.contains("checked")) {
         selectedOptions.push(selectedVal);
-
-        if (selectedOptions.length > 0) {
-          props.handleSorting(selectedOptions);
-        } else {
-          alert("請選擇欲瀏覽的分類");
-          return;
-        }
+        props.handleSorting(selectedOptions);
       }
     }
   }
@@ -98,7 +97,7 @@ const FilterBarComponent = (props) => {
         <i id="toggle-icon" className="fas fa-angle-down ps-3"></i>
       </div>
       <div className="col-md-2">
-        <label>廣告格式: </label>
+        <div onClick={handleExpand}>廣告格式: </div>
         <div className="filter-option-box">
           {filterdata.map((value, key) => {
             return value.ad_type !== "" ? (
@@ -115,8 +114,8 @@ const FilterBarComponent = (props) => {
         </div>
       </div>
 
-      <div className="col-md-2">
-        <label>廣告用途: </label>
+      <div className="col-md-2" onClick={handleExpand}>
+        <div onClick={handleExpand}>廣告用途: </div>
         <div className="filter-option-box">
           {filterdata.map((value, key) => {
             return value.ad_purpose !== "" ? (
@@ -133,8 +132,8 @@ const FilterBarComponent = (props) => {
         </div>
       </div>
 
-      <div className="col-md-2">
-        <label>支援裝置: </label>
+      <div className="col-md-2" onClick={handleExpand}>
+        <div onClick={handleExpand}>支援裝置: </div>
         <div className="filter-option-box">
           {filterdata.map((value, key) => {
             return value.supported_device !== "" ? (
@@ -151,8 +150,8 @@ const FilterBarComponent = (props) => {
         </div>
       </div>
 
-      <div className="col-md-2">
-        <label>支援平台: </label>
+      <div className="col-md-2" onClick={handleExpand}>
+        <div onClick={handleExpand}>支援平台: </div>
         <div className="filter-option-box">
           {filterdata.map((value, key) => {
             return value.supported_platform !== "" ? (
@@ -168,7 +167,7 @@ const FilterBarComponent = (props) => {
           })}
         </div>
       </div>
-      <div className="col-md-2"></div>
+      <div className="col-md-2" onClick={handleExpand}></div>
 
       <button type="button" onClick={() => handleFilterClick(this)}>
         顯示更多

@@ -28,26 +28,26 @@ const Gallery = () => {
 
   function sorting(v) {
     setLoading(false);
+    console.log(v);
     const containers = document.querySelectorAll('div[name="data_container"]');
-    let classes = "\\b(" + v.join(" ") + ")\\b",
-      dimenRegex = new RegExp(classes, "i");
+    let selectedV = v.join(" ");
+    let noVisible = 0;
 
     containers.forEach((eContainer) => {
-      let elClasses =
-        " " + eContainer.getAttribute("class").replace(/\s+/, " ") + " ";
+      const className = eContainer.getAttribute("class");
+      eContainer.style.display = "flex";
+      document.getElementById("no-result-alert").style.display = "none";
 
-      setTimeout(() => {
-        setLoading(true);
-        if (v.length > 0) {
-          if (dimenRegex.test(elClasses)) {
-            eContainer.style.display = "flex";
-          } else {
-            eContainer.style.display = "none";
-            console.log("2222");
-            // console.log(eContainer);
-          }
+      setLoading(true);
+      if (className.indexOf(selectedV) !== -1) {
+        eContainer.style.display = "flex";
+      } else {
+        eContainer.style.display = "none";
+        noVisible++;
+        if (noVisible === gallery.length) {
+          document.getElementById("no-result-alert").style.display = "block";
         }
-      }, 500);
+      }
     });
   }
 
@@ -59,10 +59,6 @@ const Gallery = () => {
     );
     const staticImgSrc = e.currentTarget.getAttribute("data-staticsrc");
     const gifImgSrc = e.currentTarget.getAttribute("data-gifsrc");
-
-    //far fa-pause-circle
-    // );
-    // console.log(playIcon);
 
     if (e.currentTarget.parentNode.classList.contains("active")) {
       e.currentTarget.parentNode.classList.remove("active");
@@ -104,20 +100,24 @@ const Gallery = () => {
         <ClipLoader color={color} size={180}></ClipLoader>
       ) : (
         <div className="grid-layout row">
+          <div id="no-result-alert" className="alert-box">
+            無法查到符合篩選條件之格式, 請再選擇相關選項.
+          </div>
           {gallery.map((value, key) => {
-            let filtercategory = value.filtercategory.replace(/,/g, " ");
+            // let filtercategory = value.filtercategory.replace(/ /g, " ");
             return (
               <div
                 id={value.tempid}
                 className={
                   value.tempid +
                   " " +
-                  filtercategory +
+                  value.filtercategory +
                   " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
                 }
                 name="data_container"
                 key={value.tempid}
               >
+                <div className="new-label"></div>
                 <img
                   src={value.previmg}
                   alt="pfxrichmedia"

@@ -46,6 +46,11 @@ const App = () => {
               Showcase
             </button>
             <a href="/adDemoPage/adhesion/ad.html">Sticky Ad Demo</a>
+            <button onClick={renderShowcase} className="">
+              關於我們
+              <br />
+              Our Service
+            </button>
           </div>
           <footer>
             <span className="fw-light">© 2019 Performics | Privacy Policy</span>

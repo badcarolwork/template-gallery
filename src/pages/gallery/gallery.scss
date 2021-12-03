@@ -32,6 +32,47 @@ div.active {
   div.show-gif {
     i {
       opacity: 0.5;
+      &.fa-pause-circle {
+        color: grey;
+      }
     }
   }
+}
+
+#no-result-alert {
+  width: 70vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+  text-align: center;
+}
+.new-label {
+  display: none;
+}
+.new .new-label {
+  display: block;
+  border-radius: 6px;
+  width: 50px;
+  height: 40px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+  background-color: #ff5656;
+  position: absolute;
+}
+.new-label:after {
+  content: "NEW";
+  color: #fff;
+  position: absolute;
+  left: 14%;
+  top: 10%;
+  font-weight: bold;
 }
