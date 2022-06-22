@@ -8,13 +8,14 @@
   padding: 20px 30px !important;
   width: calc(100% - 280px);
   overflow: hidden;
-  height: 25px;
+  height: 20px;
   justify-content: center;
   z-index: 1000;
+  transition: all 0.5s ease-in;
 
   &.expand {
     overflow: inherit;
-    height: auto;
+    height:25%;
     .filter-option-box {
       margin-top: 10px;
     }
@@ -25,8 +26,8 @@
   }
 
   button {
-    width: 150px;
-    padding: 0.7em;
+    width: 120px;
+    padding: 0.5em;
     border: 0;
     border-radius: 1em;
     box-sizing: border-box;
@@ -36,8 +37,9 @@
     text-align: center;
     transition: all 0.2s;
     cursor: pointer;
-    margin-top: 1.5rem;
+    margin:1rem 0.5rem;
   }
+  
   .bg {
     width: 100%;
     background-color: #fff;
@@ -64,4 +66,7 @@
     background-color: #6bc4e6;
     color: #fff;
   }
+
+ 
+
 }
