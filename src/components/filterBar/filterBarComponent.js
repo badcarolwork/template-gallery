@@ -54,11 +54,11 @@ const FilterBarComponent = (props) => {
   const container = document.querySelector(".filter-container");
   const Expandicon = document.getElementById("toggle-icon");
   const collaseIcon = document.querySelector("[data-icon=filter-collapse]");
+  let selectedOptions = [];
 
   function handleFilterClick(e) {
     const checkboxs = document.querySelectorAll(".filter-option");
 
-    let selectedOptions = [];
     container.classList.remove("expand");
     Expandicon.classList.add("fa-angle-down");
     Expandicon.classList.remove("fa-angle-up");
@@ -67,6 +67,7 @@ const FilterBarComponent = (props) => {
 
     for (let i = 0; i < checkboxs.length; i++) {
       const selectedVal = checkboxs[i].getAttribute("value");
+      console.log(checkboxs[i].classList.contains("checked"));
       if (checkboxs[i].classList.contains("checked")) {
         selectedOptions.push(selectedVal);
         props.handleSorting(selectedOptions);
@@ -80,6 +81,8 @@ const FilterBarComponent = (props) => {
     for (let i = 0; i < checkboxs.length; i++) {
       if (checkboxs[i].classList.contains("checked")) {
         checkboxs[i].classList.remove("checked");
+        selectedOptions = [];
+        props.handleSorting(selectedOptions);
       }
     }
   }
