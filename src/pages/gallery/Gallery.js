@@ -113,7 +113,7 @@ const Gallery = () => {
                   value.tempid +
                   " " +
                   value.filtercategory +
-                  " col-xs-12 col-sm-6 col-md-3 text-center mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
+                  " col-xs-12 col-sm-6 col-md-3 mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
                 }
                 name="data_container"
                 key={value.tempid}

@@ -51,6 +51,7 @@ h5 {
 /*** PFX Styling ***/
 $nav-button-left: 21px;
 $filter-bar-top: 100px;
+$sidebar-width: 250px;
 
 main {
   display: inline-flex;
@@ -59,7 +60,7 @@ main {
 
 div.main.content-right {
   display: flex;
-  width: calc(100% - 280px);
+  width: calc(100% - #{$sidebar-width});
   height: 100vh;
 }
 
@@ -121,9 +122,9 @@ div.content-bottom {
   stroke: #52c27a;
   stroke-width: 8px;
   fill: transparent;
-  stroke-dashoffset: -3350;
+  stroke-dashoffset: 0;
   stroke-dasharray: 3350;
-  animation: lion-animation 5s 10;
+  animation: lion-animation 5s 5;
 }
 
 @keyframes lion-animation {

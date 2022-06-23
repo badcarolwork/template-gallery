@@ -1,13 +1,16 @@
 import logo from "../../img/performics_logo_white.svg";
 import "./sidebar.scss";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to);
-  //   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+  var pathname = window.location.pathname;
+
+  if (pathname === "/") {
+    pathname = "/gallery";
+  }
 
   return (
-    <li onClick={handleSelected}>
+    <li className={pathname === to ? "active" : ""} onClick={handleSelected}>
       <Link to={to} {...props}>
         {children}
       </Link>
@@ -36,7 +39,7 @@ const Siderbar = () => {
 
         <div className="home-title d-flex text-white">
           <div className="align-self-center">
-            <div className=" mb-4">Interactive Ad Gallery</div>
+            <div className="mb-4">Interactive Ad Gallery</div>
           </div>
         </div>
 

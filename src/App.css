@@ -64,7 +64,7 @@ div.main.content-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: calc(100% - 280px);
+  width: calc(100% - 250px);
   height: 100vh;
 }
 
@@ -127,10 +127,10 @@ div.content-bottom {
   stroke: #52c27a;
   stroke-width: 8px;
   fill: transparent;
-  stroke-dashoffset: -3350;
+  stroke-dashoffset: 0;
   stroke-dasharray: 3350;
-  -webkit-animation: lion-animation 5s 10;
-          animation: lion-animation 5s 10;
+  -webkit-animation: lion-animation 5s 5;
+          animation: lion-animation 5s 5;
 }
 
 @-webkit-keyframes lion-animation {

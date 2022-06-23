@@ -24,6 +24,10 @@ a {
   font-size: 2rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 h5 {
   font-size: 1rem;
   -webkit-margin-before: 1rem;
@@ -106,6 +110,7 @@ div.content-bottom {
 .coming-container {
   width: 100%;
   height: 100%;
+  padding-top: 10%;
 }
 
 .coming-container h1 {
@@ -119,7 +124,7 @@ div.content-bottom {
   height: 40%;
   width: 27%;
   margin: auto;
-  stroke: green;
+  stroke: #52c27a;
   stroke-width: 8px;
   fill: transparent;
   stroke-dashoffset: -3350;
@@ -130,12 +135,15 @@ div.content-bottom {
 
 @-webkit-keyframes lion-animation {
   0% {
-    stroke-dashoffset: 0;
-  }
-  35% {
     stroke-dashoffset: -3350;
   }
+  35% {
+    stroke-dashoffset: 0;
+  }
   65% {
+    stroke-dashoffset: 0;
+  }
+  95% {
     stroke-dashoffset: -3350;
   }
   100% {
@@ -145,12 +153,15 @@ div.content-bottom {
 
 @keyframes lion-animation {
   0% {
-    stroke-dashoffset: 0;
-  }
-  35% {
     stroke-dashoffset: -3350;
   }
+  35% {
+    stroke-dashoffset: 0;
+  }
   65% {
+    stroke-dashoffset: 0;
+  }
+  95% {
     stroke-dashoffset: -3350;
   }
   100% {

@@ -13,7 +13,7 @@ const App = () => {
       <Sidebar />
       <div className="main content-right">
         <Routes>
-          <Route path="/" element={<Gallery />} />
+          <Route path="/" className="active" element={<Gallery />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/showcase" element={<Showcase />} />
           <Route path="/about" element={<About />} />
