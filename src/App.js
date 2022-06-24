@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Gallery from "./pages/gallery/Gallery";
 import Showcase from "./pages/showcase/Showcase";
@@ -8,8 +8,29 @@ import "./App.scss";
 import ComingSoon from "./pages/comingSoon";
 
 const App = () => {
+  const [isMobileWidth, setMobileWidth] = useState(false);
+
+  const handleWindowSizeChange = () => {
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 768) {
+      setMobileWidth(true);
+      document.getElementById("sidebar").classList.add("collapse");
+    } else {
+      setMobileWidth(false);
+      document.getElementById("sidebar").classList.add("expand");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    handleWindowSizeChange();
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
   return (
-    <main>
+    <main className={isMobileWidth ? "mobile-view" : ""}>
       <Sidebar />
       <div className="main content-right">
         <Routes>

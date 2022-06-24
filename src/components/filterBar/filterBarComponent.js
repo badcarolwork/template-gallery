@@ -106,11 +106,33 @@ const FilterBarComponent = (props) => {
     collaseIcon.classList.remove("show");
   }
 
+  function handleToggleSidebar(e) {
+    const sidebar = document.querySelector("#sidebar");
+    const rightContent = document.querySelector("main .content-right");
+
+    if (sidebar.classList.contains("expand")) {
+      sidebar.classList.remove("expand");
+      rightContent.classList.remove("expand");
+      sidebar.classList.add("collapse");
+      e.currentTarget.classList.remove("fa-times");
+      e.currentTarget.classList.add("fa-bars");
+    } else {
+      sidebar.classList.add("expand");
+      rightContent.classList.add("expand");
+      sidebar.classList.remove("collapse");
+      e.currentTarget.classList.add("fa-times");
+      e.currentTarget.classList.remove("fa-bars");
+    }
+  }
+
   return (
     <div className="filter-container">
       <div className="row">
+        <div className="col-1 mobile-menu">
+          <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
+        </div>
         <div
-          className="col-md-2"
+          className="col-md-2 col-12"
           style={{ cursor: "pointer" }}
           onClick={handleExpand}
         >
@@ -118,7 +140,7 @@ const FilterBarComponent = (props) => {
           進階選項 Filter by
           <i id="toggle-icon" className="fas fa-angle-down ps-3"></i>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 col-12">
           <div onClick={handleExpand}>廣告格式: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
@@ -136,7 +158,7 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2" onClick={handleExpand}>
+        <div className="col-md-2 col-12" onClick={handleExpand}>
           <div onClick={handleExpand}>廣告用途: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
@@ -154,7 +176,7 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2" onClick={handleExpand}>
+        <div className="col-md-2 col-12" onClick={handleExpand}>
           <div onClick={handleExpand}>支援裝置: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
@@ -172,7 +194,7 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2" onClick={handleExpand}>
+        <div className="col-md-2 col-12" onClick={handleExpand}>
           <div onClick={handleExpand}>支援平台: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
@@ -189,7 +211,7 @@ const FilterBarComponent = (props) => {
             })}
           </div>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 col-12">
           <div
             className="hide text-lightGrey"
             onClick={handleCollapse}

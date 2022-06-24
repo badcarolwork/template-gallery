@@ -1,3 +1,6 @@
+/*** PFX Styling ***/
+@import "../../App.scss";
+
 .rmThumb {
   max-width: 300px;
   width: auto !important;
@@ -48,9 +51,11 @@ div.active {
   display: none;
   text-align: center;
 }
+
 .new-label {
   display: none;
 }
+
 .new .new-label {
   display: block;
   border-radius: 6px;
@@ -66,8 +71,9 @@ div.active {
     0% 75%
   );
   background-color: #ff5656;
-  position: absolute;
+  position: absolute; 
 }
+
 .new-label:after {
   content: "NEW";
   color: #fff;
