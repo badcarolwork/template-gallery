@@ -2,9 +2,11 @@
 
 /** Mobile **/
 .mobile-view{
+
   .filter-container{
     width: calc(100% - 250px);
     padding:20px;
+    background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
 
     .mobile-logo{
       text-align:center;

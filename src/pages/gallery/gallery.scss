@@ -72,6 +72,7 @@ div.active {
   );
   background-color: #ff5656;
   position: absolute; 
+  left:3rem;
 }
 
 .new-label:after {
@@ -81,4 +82,14 @@ div.active {
   left: 14%;
   top: 10%;
   font-weight: bold;
+}
+
+.mobile-view{
+  .new .new-label{
+    left:4.4rem;
+  }
+
+  div[name="data_container"]{
+    text-align:center;
+  }
 }

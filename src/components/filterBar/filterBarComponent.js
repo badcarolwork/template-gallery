@@ -21,6 +21,7 @@ const FilterBarComponent = (props) => {
       for (var j = 0; j < l; j++) o[cols[j]] = d[j];
       formatted.push(o);
     }
+    console.log(formatted);
     setFilterdata(formatted);
   };
 
@@ -148,7 +149,9 @@ const FilterBarComponent = (props) => {
           <div onClick={handleToggleExpand}>廣告格式: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
-              return value.ad_type !== "" ? (
+              return value.ad_type !== "" ||
+                value.ad_type !== "undefined" ||
+                value.ad_type !== null ? (
                 <div
                   className="filter-option"
                   key={key}
@@ -166,7 +169,9 @@ const FilterBarComponent = (props) => {
           <div onClick={handleToggleExpand}>廣告用途: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
-              return value.ad_purpose !== "" ? (
+              return value.ad_purpose !== "" ||
+                value.ad_purpose !== "undefined" ||
+                value.ad_purpose !== null ? (
                 <div
                   className="filter-option"
                   key={key}
@@ -184,7 +189,9 @@ const FilterBarComponent = (props) => {
           <div onClick={handleToggleExpand}>支援裝置: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
-              return value.supported_device !== "" ? (
+              return value.supported_device !== "" ||
+                value.supported_device !== "undefined" ||
+                value.supported_device !== null ? (
                 <div
                   className="filter-option"
                   key={key}

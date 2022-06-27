@@ -142,12 +142,20 @@ const Gallery = () => {
                   key={value.tempid}
                 >
                   <div className="new-label"></div>
-                  <img
-                    src={value.previmg}
-                    alt="pfxrichmedia"
-                    className={value.tempid + " card-img-top rmThumb"}
-                    loading="lazy"
-                  />
+                  <a
+                    className="text-center"
+                    href={value.demolink}
+                    data-temp={value.tempid}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={value.previmg}
+                      alt="pfxrichmedia"
+                      className={value.tempid + " card-img-top rmThumb"}
+                      loading="lazy"
+                    />
+                  </a>
 
                   <div
                     className="show-gif"
@@ -164,7 +172,7 @@ const Gallery = () => {
                     <h5 className="card-title">{value.tempname}</h5>
                     {/* <div className="card-text">{value.desc}</div> */}
                   </div>
-                  <div className="card-text mt-auto align-self-start pb-2 ps-3 pe-3">
+                  <div className="card-text mt-auto pb-2 ps-3 pe-3">
                     {value.devicepc === "TRUE" ? (
                       <i className="fas fa-desktop pc me-3 text-black-50 fs-4"></i>
                     ) : null}
@@ -172,7 +180,7 @@ const Gallery = () => {
                       <i className="fas fa-mobile-alt mobile text-black-50 fs-4"></i>
                     ) : null}
                   </div>
-                  <div className="card-text mt-auto align-self-start ps-3 pe-3">
+                  <div className="card-text mt-auto ps-3 pe-3">
                     <a
                       href={value.demolink}
                       data-temp={value.tempid}

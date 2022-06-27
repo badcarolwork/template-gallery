@@ -246,6 +246,7 @@ div.active div.show-gif i.fa-pause-circle {
           clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   background-color: #ff5656;
   position: absolute;
+  left: 3rem;
 }
 
 .new-label:after {
@@ -255,5 +256,13 @@ div.active div.show-gif i.fa-pause-circle {
   left: 14%;
   top: 10%;
   font-weight: bold;
+}
+
+.mobile-view .new .new-label {
+  left: 4.4rem;
+}
+
+.mobile-view div[name="data_container"] {
+  text-align: center;
 }
 /*# sourceMappingURL=gallery.css.map */
