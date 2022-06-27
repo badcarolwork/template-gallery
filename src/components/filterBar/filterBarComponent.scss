@@ -2,9 +2,38 @@
 
 /** Mobile **/
 .mobile-view{
+  .filter-container{
+    width: calc(100% - 250px);
+    padding:20px;
+
+    .mobile-logo{
+      text-align:center;
+      display:block;
+  
+      .logo{
+        margin-top:-15px;
+        width:38%;
+        height:auto;
+      }
+    }    
+  }
+  
+  
+  .mobile-hide{
+    display:none;
+  }
+
   .filter-container .mobile-menu{
     font-size:1.3rem;
     display:block;
+    margin-bottom:1.1rem;
+
+  }
+  .filter-container.expand{
+    height:90%;
+  }
+  .mobile-filter{
+    text-align: right;
   }
 }
 
@@ -13,13 +42,17 @@
   // margin-top: -$filter-bar-top !important;
   background-color: #ffffff;
   box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
-  padding: 20px 30px !important;
+  padding: 20px 30px;
   width: calc(100% - #{$sidebar-width});
   overflow: hidden;
   height: 20px;
   justify-content: center;
   z-index: 1000;
   transition: all 0.5s ease-in;
+
+  .mobile-logo{
+    display: none;
+  }
 
   .mobile-menu{
     display:none;

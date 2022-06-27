@@ -146,8 +146,11 @@ div.content-bottom {
 
 // Mobile site
 
-main.mobile-view .main.content-right, main.mobile-view .filter-container{
+main.mobile-view .main.content-right{
   width:100%;
+}
+main.mobile-view .filter-container{
+  width: calc(100% - 40px);
 }
 div.main.content-right {
   &.expand{

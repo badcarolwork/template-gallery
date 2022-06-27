@@ -74,6 +74,7 @@ div.content-bottom {
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
+  height: 100%;
 }
 
 .btn {
@@ -162,6 +163,18 @@ div.content-bottom {
   100% {
     stroke-dashoffset: -3350;
   }
+}
+
+main.mobile-view .main.content-right {
+  width: 100%;
+}
+
+main.mobile-view .filter-container {
+  width: calc(100% - 250px);
+}
+
+div.main.content-right.expand {
+  width: calc(100% - 250px);
 }
 
 .modal-container {

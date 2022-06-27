@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./filterBarComponent.scss";
+import logo from "../../img/mobile-logo.png";
 
 const FilterBarComponent = (props) => {
   // clean the database
@@ -53,7 +54,7 @@ const FilterBarComponent = (props) => {
 
   const container = document.querySelector(".filter-container");
   const Expandicon = document.getElementById("toggle-icon");
-  const collaseIcon = document.querySelector("[data-icon=filter-collapse]");
+  // const collaseIcon = document.querySelector("[data-icon=filter-collapse]");
   let selectedOptions = [];
 
   function handleFilterClick(e) {
@@ -62,8 +63,8 @@ const FilterBarComponent = (props) => {
     container.classList.remove("expand");
     Expandicon.classList.add("fa-angle-down");
     Expandicon.classList.remove("fa-angle-up");
-    collaseIcon.classList.add("hide");
-    collaseIcon.classList.remove("show");
+    // collaseIcon.classList.add("hide");
+    // collaseIcon.classList.remove("show");
 
     for (let i = 0; i < checkboxs.length; i++) {
       const selectedVal = checkboxs[i].getAttribute("value");
@@ -87,23 +88,23 @@ const FilterBarComponent = (props) => {
     }
   }
 
-  function handleExpand(e) {
+  function handleToggleExpand(e) {
     const container = document.querySelector(".filter-container");
-    container.classList.add("expand");
-    Expandicon.classList.remove("fa-angle-down");
-    Expandicon.classList.add("fa-angle-up");
 
-    collaseIcon.classList.add("show");
-    collaseIcon.classList.remove("hide");
-  }
+    if (container.classList.contains("expand")) {
+      container.classList.remove("expand");
+      Expandicon.classList.add("fa-angle-down");
+      Expandicon.classList.remove("fa-angle-up");
+      // collaseIcon.classList.add("hide");
+      // collaseIcon.classList.remove("show");
+    } else {
+      container.classList.add("expand");
+      Expandicon.classList.remove("fa-angle-down");
+      Expandicon.classList.add("fa-angle-up");
 
-  function handleCollapse(e) {
-    console.log(e);
-    container.classList.remove("expand");
-    Expandicon.classList.add("fa-angle-down");
-    Expandicon.classList.remove("fa-angle-up");
-    collaseIcon.classList.add("hide");
-    collaseIcon.classList.remove("show");
+      // collaseIcon.classList.add("show");
+      // collaseIcon.classList.remove("hide");
+    }
   }
 
   function handleToggleSidebar(e) {
@@ -128,20 +129,23 @@ const FilterBarComponent = (props) => {
   return (
     <div className="filter-container">
       <div className="row">
-        <div className="col-1 mobile-menu">
+        <div className="col-3 mobile-menu">
           <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
         </div>
+        <div className="col-5 mobile-logo">
+          <img src={logo} className="logo" alt="logo" />
+        </div>
         <div
-          className="col-md-2 col-12"
+          className="col-md-2 col-4 mobile-filter"
           style={{ cursor: "pointer" }}
-          onClick={handleExpand}
+          onClick={handleToggleExpand}
         >
           <i className="fas fa-filter pe-1"></i>
-          進階選項 Filter by
-          <i id="toggle-icon" className="fas fa-angle-down ps-3"></i>
+          進階選項<span class="mobile-hide">Filter by</span>
+          <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
         </div>
         <div className="col-md-2 col-12">
-          <div onClick={handleExpand}>廣告格式: </div>
+          <div onClick={handleToggleExpand}>廣告格式: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
               return value.ad_type !== "" ? (
@@ -158,8 +162,8 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2 col-12" onClick={handleExpand}>
-          <div onClick={handleExpand}>廣告用途: </div>
+        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
+          <div onClick={handleToggleExpand}>廣告用途: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
               return value.ad_purpose !== "" ? (
@@ -176,8 +180,8 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2 col-12" onClick={handleExpand}>
-          <div onClick={handleExpand}>支援裝置: </div>
+        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
+          <div onClick={handleToggleExpand}>支援裝置: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
               return value.supported_device !== "" ? (
@@ -194,8 +198,8 @@ const FilterBarComponent = (props) => {
           </div>
         </div>
 
-        <div className="col-md-2 col-12" onClick={handleExpand}>
-          <div onClick={handleExpand}>支援平台: </div>
+        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
+          <div onClick={handleToggleExpand}>支援平台: </div>
           <div className="filter-option-box">
             {filterdata.map((value, key) => {
               return value.supported_platform !== "" ? (
@@ -211,15 +215,15 @@ const FilterBarComponent = (props) => {
             })}
           </div>
         </div>
-        <div className="col-md-2 col-12">
+        {/* <div className="col-md-2 col-12">
           <div
             className="hide text-lightGrey"
-            onClick={handleCollapse}
+            onClick={handleToggleExpand}
             data-icon="filter-collapse"
           >
             <i className="fa fa-times large-icon"></i>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="row d-flex justify-content-center">
         <button

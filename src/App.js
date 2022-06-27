@@ -15,9 +15,11 @@ const App = () => {
     if (window.innerWidth <= 768) {
       setMobileWidth(true);
       document.getElementById("sidebar").classList.add("collapse");
+      document.getElementById("sidebar").classList.remove("expand");
     } else {
       setMobileWidth(false);
       document.getElementById("sidebar").classList.add("expand");
+      document.getElementById("sidebar").classList.remove("collapse");
     }
   };
 

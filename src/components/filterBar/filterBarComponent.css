@@ -164,14 +164,51 @@ div.content-bottom {
   }
 }
 
-main.mobile-view .main.content-right, .filter-container {
+main.mobile-view .main.content-right {
   width: 100%;
 }
 
+main.mobile-view .filter-container {
+  width: calc(100% - 40px);
+}
+
+div.main.content-right.expand {
+  width: calc(100% - 250px);
+}
+
 /** Mobile **/
+.mobile-view .filter-container {
+  width: calc(100% - 250px);
+  padding: 20px;
+}
+
+.mobile-view .filter-container .mobile-logo {
+  text-align: center;
+  display: block;
+}
+
+.mobile-view .filter-container .mobile-logo .logo {
+  margin-top: -15px;
+  width: 38%;
+  height: auto;
+}
+
+.mobile-view .mobile-hide {
+  display: none;
+}
+
 .mobile-view .filter-container .mobile-menu {
   font-size: 1.3rem;
   display: block;
+  margin-bottom: 1.1rem;
+}
+
+.mobile-view .filter-container.expand {
+  height: 90%;
+}
+
+.mobile-view .mobile-filter {
+  text-align: right;
 }
 
 .filter-container {
@@ -179,7 +216,7 @@ main.mobile-view .main.content-right, .filter-container {
   background-color: #ffffff;
   -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
           box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
-  padding: 20px 30px !important;
+  padding: 20px 30px;
   width: calc(100% - 250px);
   overflow: hidden;
   height: 20px;
@@ -189,6 +226,10 @@ main.mobile-view .main.content-right, .filter-container {
   z-index: 1000;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
+}
+
+.filter-container .mobile-logo {
+  display: none;
 }
 
 .filter-container .mobile-menu {

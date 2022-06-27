@@ -24,9 +24,18 @@ function handleSelected(e) {
   for (let i = 0; i < menus.length; i++) {
     menus[i].classList.remove("active");
   }
-
   //   console.log(e.target.parentNode);
   e.target.parentNode.classList.add("active");
+
+  // collapse sidebar on mobile
+  // const mainContainer = document.querySelector("main");
+  // if (mainContainer.classList.contains("mobile-view")) {
+  //   document.getElementById("sidebar").classList.add("collapse");
+  //   document.getElementById("sidebar").classList.remove("expand");
+  // } else {
+  //   document.getElementById("sidebar").classList.add("expand");
+  //   document.getElementById("sidebar").classList.remove("collapse");
+  // }
 }
 
 const Siderbar = () => {

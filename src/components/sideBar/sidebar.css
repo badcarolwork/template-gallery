@@ -165,12 +165,16 @@ div.content-bottom {
   }
 }
 
-main.mobile-view nav.sidebar {
-  margin-left: calc(-250px - 20px);
+main.mobile-view .main.content-right {
+  width: 100%;
 }
 
-main.mobile-view .main.content-right, .filter-container {
-  width: 100%;
+main.mobile-view .filter-container {
+  width: calc(100% - 250px);
+}
+
+div.main.content-right.expand {
+  width: calc(100% - 250px);
 }
 
 nav.sidebar {

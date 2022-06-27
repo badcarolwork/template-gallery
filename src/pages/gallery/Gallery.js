@@ -170,27 +170,23 @@ const Gallery = () => {
                     ) : null}
                   </div>
                   <div className="card-text mt-auto align-self-start ps-3 pe-3">
-                    {/* <a
-                    href={value.demolink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  > */}
+                    <a
+                      href={value.demolink}
+                      data-temp={value.tempid}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button className="btn btn-primary">Demo Preview</button>
+                    </a>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-secondary ms-3"
                       onClick={handleToggleModal}
                       data-temp={value.tempid}
                       data-src={value.previmg}
                       data-desc={value.desc}
                       data-name={value.tempname}
                     >
-                      嘗試範例
-                    </button>
-                    {/* </a> */}
-                    <button
-                      className="btn btn-secondary ms-3"
-                      data-temp={value.tempid}
-                    >
-                      案例參考
+                      更多詳情
                     </button>
                   </div>
                 </div>
