@@ -155,7 +155,10 @@ const Gallery = () => {
                     data-staticsrc={value.previmg}
                     data-gifsrc={value.prevgif}
                   >
-                    <i className="far fa-play-circle"></i>
+                    <i
+                      className="far fa-play-circle"
+                      style={{ display: "none" }}
+                    ></i>
                   </div>
                   <div className="card-body text-start ps-3 pe-3">
                     <h5 className="card-title">{value.tempname}</h5>
@@ -176,7 +179,7 @@ const Gallery = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <button className="btn btn-primary">Demo Preview</button>
+                      <button className="btn btn-primary">Demo</button>
                     </a>
                     <button
                       className="btn btn-secondary ms-3"

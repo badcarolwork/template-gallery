@@ -141,7 +141,7 @@ const FilterBarComponent = (props) => {
           onClick={handleToggleExpand}
         >
           <i className="fas fa-filter pe-1"></i>
-          進階選項<span class="mobile-hide">Filter by</span>
+          進階選項<span className="mobile-hide">Filter by</span>
           <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
         </div>
         <div className="col-md-2 col-12">
