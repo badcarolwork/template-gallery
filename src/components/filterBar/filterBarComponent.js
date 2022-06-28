@@ -210,7 +210,11 @@ const FilterBarComponent = (props) => {
           <div>支援裝置: </div>
           <div className="filter-option-box">
             {filterdata.map((v, k) => {
-              if (v.device === "null" || v.device === "undefined") {
+              if (
+                v.device === "null" ||
+                v.device === "" ||
+                v.device === "undefined"
+              ) {
                 return null;
               } else {
                 return (
