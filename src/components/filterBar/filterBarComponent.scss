@@ -8,6 +8,10 @@
     padding:20px;
     background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
 
+    &.expand {
+     background:#fff;
+    }
+
     .mobile-logo{
       text-align:center;
       display:block;
@@ -18,8 +22,7 @@
         height:auto;
       }
     }    
-  }
-  
+  }  
   
   .mobile-hide{
     display:none;

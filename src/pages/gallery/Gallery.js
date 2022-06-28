@@ -31,27 +31,29 @@ const Gallery = () => {
 
   function sorting(v) {
     setLoading(false);
-    // console.log(v);
     const containers = document.querySelectorAll('div[name="data_container"]');
-    let selectedV = v.join(" ");
-    let noVisible = 0;
 
-    containers.forEach((eContainer) => {
-      const className = eContainer.getAttribute("class");
-      eContainer.style.display = "flex";
-      document.getElementById("no-result-alert").style.display = "none";
+    setLoading(true);
 
-      setLoading(true);
-      if (className.indexOf(selectedV) !== -1) {
-        eContainer.style.display = "flex";
-      } else {
-        eContainer.style.display = "none";
-        noVisible++;
-        if (noVisible === gallery.length) {
-          document.getElementById("no-result-alert").style.display = "block";
+    if (v.length <= 0) {
+      for (let i = 0; i < containers.length; i++) {
+        containers[i].style.display = "flex";
+      }
+    } else {
+      for (let i = 0; i < v.length; i++) {
+        const eachValue = v[i];
+
+        for (let c = 0; c < containers.length; c++) {
+          const currentTarget = containers[c];
+
+          if (currentTarget.classList.contains(eachValue)) {
+            currentTarget.style.display = "flex";
+          } else {
+            currentTarget.style.display = "none";
+          }
         }
       }
-    });
+    }
   }
 
   function handleShowGifDemo(e) {
@@ -80,14 +82,12 @@ const Gallery = () => {
     setToggleModal(true);
     let arr = [];
 
-    // setSelectedTempId;
-
-    arr.push(
-      e.currentTarget.getAttribute("data-temp"),
-      e.currentTarget.getAttribute("data-src"),
-      e.currentTarget.getAttribute("data-desc"),
-      e.currentTarget.getAttribute("data-name")
-    );
+    arr.push({
+      templatename: e.currentTarget.getAttribute("data-name"),
+      templateId: e.currentTarget.getAttribute("data-temp"),
+      previewGif: e.currentTarget.getAttribute("data-src"),
+      description: e.currentTarget.getAttribute("data-desc"),
+    });
     setSelectedTemp(arr);
   }
 
@@ -117,7 +117,7 @@ const Gallery = () => {
 
       <div className="content-bottom">
         {toggleModal && (
-          <Modal toggleModal={setToggleModal} tempId={selectedTemp} />
+          <Modal toggleModal={setToggleModal} templateData={selectedTemp} />
         )}
 
         {!loading ? (
@@ -127,6 +127,7 @@ const Gallery = () => {
             <div id="no-result-alert" className="alert-box">
               無法查到符合篩選條件之格式, 請再選擇相關選項.
             </div>
+
             {gallery.map((value, key) => {
               // let filtercategory = value.filtercategory.replace(/ /g, " ");
               return (
@@ -136,7 +137,7 @@ const Gallery = () => {
                     value.tempid +
                     " " +
                     value.filtercategory +
-                    " col-12 col-sm-6 col-md-3 mb-5 align-items-stretch flex-column align-items-stretch gallery-box"
+                    " col-12 col-sm-6 col-md-3 align-items-stretch flex-column align-items-stretch gallery-box"
                   }
                   name="data_container"
                   key={value.tempid}
@@ -174,10 +175,10 @@ const Gallery = () => {
                   </div>
                   <div className="card-text mt-auto pb-2 ps-3 pe-3">
                     {value.devicepc === "TRUE" ? (
-                      <i className="fas fa-desktop pc me-3 text-black-50 fs-4"></i>
+                      <i className="fas fa-desktop pc me-3 icon-text-size fs-4"></i>
                     ) : null}
                     {value.devicemobile === "TRUE" ? (
-                      <i className="fas fa-mobile-alt mobile text-black-50 fs-4"></i>
+                      <i className="fas fa-mobile-alt mobile icon-text-size fs-4"></i>
                     ) : null}
                   </div>
                   <div className="card-text mt-auto ps-3 pe-3">
@@ -189,16 +190,6 @@ const Gallery = () => {
                     >
                       <button className="btn btn-primary">Demo</button>
                     </a>
-                    <button
-                      className="btn btn-secondary ms-3"
-                      onClick={handleToggleModal}
-                      data-temp={value.tempid}
-                      data-src={value.previmg}
-                      data-desc={value.desc}
-                      data-name={value.tempname}
-                    >
-                      更多詳情
-                    </button>
                   </div>
                 </div>
               );

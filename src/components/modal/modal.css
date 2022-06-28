@@ -25,6 +25,10 @@ a {
   font-size: 2rem;
 }
 
+.icon-text-size {
+  font-size: 1.2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -170,7 +174,7 @@ main.mobile-view .main.content-right {
 }
 
 main.mobile-view .filter-container {
-  width: calc(100% - 250px);
+  width: calc(100% - 40px);
 }
 
 div.main.content-right.expand {
@@ -216,5 +220,25 @@ div.main.content-right.expand {
 .modal-container .modal-body .modal-title .title {
   width: 97%;
   color: darkslategrey;
+}
+
+main.mobile-view .modal-container {
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+}
+
+main.mobile-view .modal-container .modal-body {
+  width: 80%;
+  height: 80%;
+}
+
+main.mobile-view .modal-container .modal-body .modal-title .title {
+  width: 85%;
+}
+
+main.mobile-view .modal-container .modal-body .modal-title .close-modal {
+  width: 13%;
+  text-align: right;
 }
 /*# sourceMappingURL=modal.css.map */

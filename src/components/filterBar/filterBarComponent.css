@@ -24,6 +24,10 @@ a {
   font-size: 2rem;
 }
 
+.icon-text-size {
+  font-size: 1.2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -181,6 +185,10 @@ div.main.content-right.expand {
   width: calc(100% - 250px);
   padding: 20px;
   background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
+}
+
+.mobile-view .filter-container.expand {
+  background: #fff;
 }
 
 .mobile-view .filter-container .mobile-logo {

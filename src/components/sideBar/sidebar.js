@@ -26,16 +26,6 @@ function handleSelected(e) {
   }
   //   console.log(e.target.parentNode);
   e.target.parentNode.classList.add("active");
-
-  // collapse sidebar on mobile
-  // const mainContainer = document.querySelector("main");
-  // if (mainContainer.classList.contains("mobile-view")) {
-  //   document.getElementById("sidebar").classList.add("collapse");
-  //   document.getElementById("sidebar").classList.remove("expand");
-  // } else {
-  //   document.getElementById("sidebar").classList.add("expand");
-  //   document.getElementById("sidebar").classList.remove("collapse");
-  // }
 }
 
 const Siderbar = () => {
@@ -56,20 +46,6 @@ const Siderbar = () => {
           <CustomLink to="/gallery">
             互動廣告 <br />
             Intreactive Display Ad
-          </CustomLink>
-          <CustomLink to="/comingsoon">
-            互動影音廣告 <br />
-            Interactive Video Ad
-          </CustomLink>
-          <CustomLink to="/comingsoon">
-            廣告案例演示 <br />
-            Showcase
-          </CustomLink>
-
-          <CustomLink to="/comingsoon">
-            關於我們
-            <br />
-            Our Service
           </CustomLink>
         </ul>
         <footer>

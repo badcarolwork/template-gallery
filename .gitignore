@@ -24,3 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 /image-edit
+
+# backup JS file
+/src/pages/gallery/bk-more-button.js
+/src/components/sideBar/bk-sidebar.js

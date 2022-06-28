@@ -21,7 +21,7 @@ const FilterBarComponent = (props) => {
       for (var j = 0; j < l; j++) o[cols[j]] = d[j];
       formatted.push(o);
     }
-    console.log(formatted);
+    // console.log(formatted);
     setFilterdata(formatted);
   };
 
@@ -59,6 +59,8 @@ const FilterBarComponent = (props) => {
   let selectedOptions = [];
 
   function handleFilterClick(e) {
+    // reset all selected filters
+    selectedOptions = [];
     const checkboxs = document.querySelectorAll(".filter-option");
 
     container.classList.remove("expand");
@@ -69,7 +71,7 @@ const FilterBarComponent = (props) => {
 
     for (let i = 0; i < checkboxs.length; i++) {
       const selectedVal = checkboxs[i].getAttribute("value");
-      console.log(checkboxs[i].classList.contains("checked"));
+      // console.log(checkboxs[i].classList.contains("checked"));
       if (checkboxs[i].classList.contains("checked")) {
         selectedOptions.push(selectedVal);
         props.handleSorting(selectedOptions);
@@ -146,91 +148,73 @@ const FilterBarComponent = (props) => {
           <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
         </div>
         <div className="col-md-2 col-12">
-          <div onClick={handleToggleExpand}>廣告格式: </div>
+          <div>廣告格式: </div>
           <div className="filter-option-box">
-            {filterdata.map((value, key) => {
-              return value.ad_type !== "" ||
-                value.ad_type !== "undefined" ||
-                value.ad_type !== null ? (
-                <div
-                  className="filter-option"
-                  key={key}
-                  value={value.ad_type}
-                  onClick={handleCheckedOption}
-                >
-                  {value.ad_type_label}
-                </div>
-              ) : null;
+            {filterdata.map((v, k) => {
+              if (v.ad_type === "" || v.ad_type === "undefined") {
+                return null;
+              } else {
+                return (
+                  <div
+                    className="filter-option"
+                    key={k}
+                    value={v.ad_type}
+                    onClick={handleCheckedOption}
+                  >
+                    {v.ad_type_label}
+                  </div>
+                );
+              }
             })}
           </div>
         </div>
 
-        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
-          <div onClick={handleToggleExpand}>廣告用途: </div>
+        <div className="col-md-2 col-12">
+          <div>廣告用途: </div>
           <div className="filter-option-box">
-            {filterdata.map((value, key) => {
-              return value.ad_purpose !== "" ||
-                value.ad_purpose !== "undefined" ||
-                value.ad_purpose !== null ? (
-                <div
-                  className="filter-option"
-                  key={key}
-                  value={value.ad_purpose}
-                  onClick={handleCheckedOption}
-                >
-                  {value.ad_purpose_label}
-                </div>
-              ) : null;
+            {filterdata.map((v, k) => {
+              if (v.ad_purpose === "" || v.ad_purpose === "undefined") {
+                return null;
+              } else {
+                return (
+                  <div
+                    className="filter-option"
+                    key={k}
+                    value={v.ad_purpose}
+                    onClick={handleCheckedOption}
+                  >
+                    {v.ad_purpose_label}
+                  </div>
+                );
+              }
             })}
           </div>
         </div>
 
-        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
-          <div onClick={handleToggleExpand}>支援裝置: </div>
+        <div className="col-md-2 col-12">
+          <div>支援裝置: </div>
           <div className="filter-option-box">
-            {filterdata.map((value, key) => {
-              return value.supported_device !== "" ||
-                value.supported_device !== "undefined" ||
-                value.supported_device !== null ? (
-                <div
-                  className="filter-option"
-                  key={key}
-                  value={value.supported_device}
-                  onClick={handleCheckedOption}
-                >
-                  {value.supported_device_label}
-                </div>
-              ) : null;
+            {filterdata.map((v, k) => {
+              if (
+                v.supported_device === "" ||
+                v.supported_device === "undefined"
+              ) {
+                return null;
+              } else {
+                return (
+                  <div
+                    className="filter-option"
+                    key={k}
+                    value={v.supported_device}
+                    onClick={handleCheckedOption}
+                  >
+                    {v.supported_device_label}
+                  </div>
+                );
+              }
             })}
           </div>
         </div>
-
-        <div className="col-md-2 col-12" onClick={handleToggleExpand}>
-          <div onClick={handleToggleExpand}>支援平台: </div>
-          <div className="filter-option-box">
-            {filterdata.map((value, key) => {
-              return value.supported_platform !== "" ? (
-                <div
-                  className="filter-option"
-                  key={key}
-                  value={value.supported_platform}
-                  onClick={handleCheckedOption}
-                >
-                  {value.supported_platform}
-                </div>
-              ) : null;
-            })}
-          </div>
-        </div>
-        {/* <div className="col-md-2 col-12">
-          <div
-            className="hide text-lightGrey"
-            onClick={handleToggleExpand}
-            data-icon="filter-collapse"
-          >
-            <i className="fa fa-times large-icon"></i>
-          </div>
-        </div> */}
       </div>
       <div className="row d-flex justify-content-center">
         <button

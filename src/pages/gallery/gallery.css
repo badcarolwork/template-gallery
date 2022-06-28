@@ -25,6 +25,10 @@ a {
   font-size: 2rem;
 }
 
+.icon-text-size {
+  font-size: 1.2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -70,7 +74,7 @@ div.main.content-right {
 }
 
 div.content-bottom {
-  padding-top: 100px;
+  padding-top: 85px;
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
@@ -189,6 +193,7 @@ div.main.content-right.expand {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  margin-bottom: 4rem;
 }
 
 .grid-layout {

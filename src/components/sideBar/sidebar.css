@@ -25,6 +25,10 @@ a {
   font-size: 2rem;
 }
 
+.icon-text-size {
+  font-size: 1.2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -170,7 +174,7 @@ main.mobile-view .main.content-right {
 }
 
 main.mobile-view .filter-container {
-  width: calc(100% - 250px);
+  width: calc(100% - 40px);
 }
 
 div.main.content-right.expand {
