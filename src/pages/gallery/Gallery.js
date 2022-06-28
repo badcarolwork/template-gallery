@@ -32,6 +32,8 @@ const Gallery = () => {
   function sorting(v) {
     setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
+    document.getElementById("no-result-alert").style.display = "none";
+    let noVisible = 0;
 
     setLoading(true);
 
@@ -48,8 +50,14 @@ const Gallery = () => {
 
           if (currentTarget.classList.contains(eachValue)) {
             currentTarget.style.display = "flex";
+            document.getElementById("no-result-alert").style.display = "none";
           } else {
             currentTarget.style.display = "none";
+            noVisible++;
+            if (noVisible === v.length) {
+              document.getElementById("no-result-alert").style.display =
+                "block";
+            }
           }
         }
       }

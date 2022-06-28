@@ -43,6 +43,7 @@ const FilterBarComponent = (props) => {
         });
     };
     getAPI();
+    handleHideEmptyFilterOption();
   }, []);
 
   function handleCheckedOption(e) {
@@ -76,6 +77,19 @@ const FilterBarComponent = (props) => {
         selectedOptions.push(selectedVal);
         props.handleSorting(selectedOptions);
       }
+    }
+  }
+
+  function handleHideEmptyFilterOption() {
+    const elements = document.querySelectorAll(".filter-option");
+
+    for (let i = 0; i < elements.length; i++) {
+      const ele = elements[i];
+      let checlVal = ele.getAttribute("value");
+      console.log(checlVal);
+      // if (checlVal === "" || checlVal === "undefined" || checlVal === null) {
+      //   ele.styel.display = "none";
+      // }
     }
   }
 
@@ -147,6 +161,7 @@ const FilterBarComponent = (props) => {
           進階選項<span className="mobile-hide">Filter by</span>
           <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
         </div>
+
         <div className="col-md-2 col-12">
           <div>廣告格式: </div>
           <div className="filter-option-box">
@@ -195,20 +210,17 @@ const FilterBarComponent = (props) => {
           <div>支援裝置: </div>
           <div className="filter-option-box">
             {filterdata.map((v, k) => {
-              if (
-                v.supported_device === "" ||
-                v.supported_device === "undefined"
-              ) {
+              if (v.device === "null" || v.device === "undefined") {
                 return null;
               } else {
                 return (
                   <div
                     className="filter-option"
                     key={k}
-                    value={v.supported_device}
+                    value={v.device}
                     onClick={handleCheckedOption}
                   >
-                    {v.supported_device_label}
+                    {v.device_label}
                   </div>
                 );
               }
