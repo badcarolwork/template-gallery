@@ -26,6 +26,7 @@ const Gallery = () => {
       formatted.push(o);
     }
     setGallery(formatted);
+
     setLoading(true);
   };
 
@@ -122,7 +123,7 @@ const Gallery = () => {
   return (
     <div>
       <FilterBarComponent handleSorting={sorting} />
-
+      {console.log(gallery)}
       <div className="content-bottom">
         {toggleModal && (
           <Modal toggleModal={setToggleModal} templateData={selectedTemp} />
