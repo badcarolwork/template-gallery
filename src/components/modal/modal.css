@@ -261,8 +261,8 @@ main.mobile-view .modal-container {
 }
 
 main.mobile-view .modal-container .close-modal {
-  right: 3vw;
-  top: 12vh;
+  right: 10%;
+  top: 10%;
 }
 
 main.mobile-view .modal-container .modal-body {
