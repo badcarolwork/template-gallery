@@ -40,13 +40,13 @@ const Modal = ({ toggleModal, data }) => {
 
   return data !== "" ? (
     <div className="modal-container">
-      <div className="modal-body">
-        <div
-          onClick={() => {
-            toggleModal(false);
-          }}
-          className="close-modal"
-        >
+      <div
+        onClick={() => {
+          toggleModal(false);
+        }}
+        className="close-modal"
+      >
+        <div className="modal-body">
           <i className="fa fa-times "></i>
         </div>
         <div className="modal-content mt-3">
