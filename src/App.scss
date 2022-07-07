@@ -154,8 +154,10 @@ div.content-bottom {
 
 main.mobile-view .main.content-right{
   width:100%;
+
   div.content-bottom{
-    width:100vw;
+    width:100%;
+    max-height: calc(100% - #{$filter-bar-top});
   }
 }
 main.mobile-view .filter-container{
