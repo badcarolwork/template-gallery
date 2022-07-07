@@ -86,7 +86,7 @@ const FilterBarComponent = (props) => {
     for (let i = 0; i < elements.length; i++) {
       const ele = elements[i];
       let checlVal = ele.getAttribute("value");
-      console.log(checlVal);
+      // console.log(checlVal);
       // if (checlVal === "" || checlVal === "undefined" || checlVal === null) {
       //   ele.styel.display = "none";
       // }

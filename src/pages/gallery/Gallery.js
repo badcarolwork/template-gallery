@@ -9,7 +9,8 @@ const Gallery = () => {
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
   const [toggleModal, setToggleModal] = useState(false);
-  let [selectedTemp, setSelectedTemp] = useState([]);
+  let [selectedDatas, setSelectedDatas] = useState([]);
+  const mainUrl = process.env.REACT_APP_MAINURL;
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -89,21 +90,19 @@ const Gallery = () => {
 
   function handleToggleModal(e) {
     setToggleModal(true);
-    let arr = [];
+    var selectedTemplate = e.currentTarget.getAttribute("data");
 
-    arr.push({
-      templatename: e.currentTarget.getAttribute("data-name"),
-      templateId: e.currentTarget.getAttribute("data-temp"),
-      previewGif: e.currentTarget.getAttribute("data-src"),
-      description: e.currentTarget.getAttribute("data-desc"),
+    gallery.forEach((v) => {
+      if (v.tempid === selectedTemplate) {
+        setSelectedDatas(v);
+      }
     });
-    setSelectedTemp(arr);
   }
 
   useEffect(() => {
     const getAPI = function () {
       fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/gallery?alt=json&key=" +
+        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/dev_gallery?alt=json&key=" +
           process.env.REACT_APP_API_KEY
       )
         .then((res) => res.json())
@@ -123,10 +122,10 @@ const Gallery = () => {
   return (
     <div>
       <FilterBarComponent handleSorting={sorting} />
-      {console.log(gallery)}
+      {/* {console.log(gallery)} */}
       <div className="content-bottom">
         {toggleModal && (
-          <Modal toggleModal={setToggleModal} templateData={selectedTemp} />
+          <Modal toggleModal={setToggleModal} data={selectedDatas} />
         )}
 
         {!loading ? (
@@ -154,13 +153,13 @@ const Gallery = () => {
                   <div className="new-label"></div>
                   <a
                     className="text-center"
-                    href={value.demolink}
+                    href={mainUrl + value.demolink}
                     data-temp={value.tempid}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={value.previmg}
+                      src={mainUrl + value.previmg}
                       alt="pfxrichmedia"
                       className={value.tempid + " card-img-top rmThumb"}
                       loading="lazy"
@@ -192,13 +191,21 @@ const Gallery = () => {
                   </div>
                   <div className="card-text mt-auto ps-3 pe-3">
                     <a
-                      href={value.demolink}
+                      href={mainUrl + value.demolink}
                       data-temp={value.tempid}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <button className="btn btn-primary">Demo</button>
                     </a>
+
+                    <button
+                      className="ms-3 btn btn-secondary"
+                      onClick={handleToggleModal}
+                      data={value.tempid}
+                    >
+                      More Info
+                    </button>
                   </div>
                 </div>
               );

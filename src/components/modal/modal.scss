@@ -4,18 +4,35 @@
 .modal-container{
     position: fixed;
     width:101vw;
-    height:100%;
+    height:101vh;
     background-color: rgba(0,0,0,0.4);
     z-index:100000;
-    margin-top:-100px;
-    margin-left: calc(-#{$sidebar-width} - 19px);
+    margin-top:-85px;
+    margin-left: calc(-#{$sidebar-width} - 15px);
     transition: all 0.5 ease-in-out;
+
+    .close-modal{
+        width:40px;
+        height:32px;
+        position: fixed;
+        z-index:10;
+        left: 71%;
+        top: 13%;
+        font-size:1.5rem;
+        border:1px solid gray;
+        border-radius:40px;
+        color:gray;
+        text-align:center;
+        padding-top:8px;
+        background-color:#ffffff;
+        box-shadow: -1px 2px 16px 0px rgba(0,0,0,0.38);
+    }
 
 
     .modal-body{
         position: absolute;
-        width:calc(50% - 1rem);
-        height:calc(90% - 1rem);
+        width:calc(45% - 1rem);
+        height:calc(70% - 1rem);
         background-color:#fff;
         margin:auto;
         left:0;
@@ -23,18 +40,33 @@
         right:0;
         bottom:0;
         border-radius:1rem;
-        padding:1rem;
-
-        .modal-title{
-            width:100%;
-            padding:1rem 0;
-            border-bottom:1px solid lightgray;
-            display:flex;
-            font-size:1.5rem;
+        padding:1rem;      
+       
+        
+        .modal-content {
 
             .title{
-                width:97%;
                 color:darkslategrey;
+                font-size:1.5rem;
+                font-weight:bold;
+            }
+
+            table{
+                border:solid 1px lightgrey;
+                text-align:center;
+
+                thead{
+                    background-color:$primary-bg-color;
+                    color:white;
+                    font-weight:bold;
+                }
+                td, thead th{                    
+                    padding:0.3rem;
+                }
+            }
+
+            video{
+                max-width:240px;
             }
         }
     }
@@ -43,22 +75,23 @@
 //** Mobile View **//
 main.mobile-view{
     .modal-container{
-        width:100%;
-        height:100%;
+        width:100vw;
+        height:100vh;
         margin-left:0;
+
+        .close-modal{
+            right: 3vw;
+            top: 12vh;
+        }
 
         .modal-body{
             width:80%;
-            height:80%;
+            max-height:80%;
+            overflow-x: hidden;
+            overflow-y: auto;
 
-            .modal-title {
-                .title{
-                width:85%;
-                }
-                .close-modal{
-                    width:13%;
-                    text-align:right;
-                }
+            .demoBox{
+                margin-top:3rem;
             }
         }
     }
