@@ -46,9 +46,9 @@ const Modal = ({ toggleModal, data }) => {
         }}
         className="close-modal"
       >
-        <div className="modal-body">
-          <i className="fa fa-times "></i>
-        </div>
+        <i className="fa fa-times "></i>
+      </div>
+      <div className="modal-body">
         <div className="modal-content mt-3">
           <div className="grid-layout row">
             <div className="col-md-6 col-12">
