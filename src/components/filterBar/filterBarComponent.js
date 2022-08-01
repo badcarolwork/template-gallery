@@ -4,7 +4,32 @@ import logo from "../../img/mobile-logo.png";
 
 const FilterBarComponent = (props) => {
   // clean the database
+
   const [filterdata, setFilterdata] = useState([]);
+
+  const setFilterBar = props.parent;
+
+  // Check source page
+
+  useEffect(() => {
+    const getAPI = function () {
+      fetch(
+        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/filterbar?alt=json&key=" +
+          process.env.REACT_APP_API_KEY
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          sortFilterData(res);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setTimeout(() => {
+            getAPI();
+          }, 1000);
+        });
+    };
+    getAPI();
+  }, []);
 
   const sortFilterData = (getdata) => {
     // console.log(data);
@@ -25,27 +50,6 @@ const FilterBarComponent = (props) => {
     setFilterdata(formatted);
   };
 
-  useEffect(() => {
-    const getAPI = function () {
-      fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/filterbar?alt=json&key=" +
-          process.env.REACT_APP_API_KEY
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          sortFilterData(res);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setTimeout(() => {
-            getAPI();
-          }, 1000);
-        });
-    };
-    getAPI();
-    handleHideEmptyFilterOption();
-  }, []);
-
   function handleCheckedOption(e) {
     if (e.currentTarget.classList.contains("checked")) {
       e.currentTarget.classList.remove("checked");
@@ -56,7 +60,6 @@ const FilterBarComponent = (props) => {
 
   const container = document.querySelector(".filter-container");
   const Expandicon = document.getElementById("toggle-icon");
-  // const collaseIcon = document.querySelector("[data-icon=filter-collapse]");
   let selectedOptions = [];
 
   function handleFilterClick(e) {
@@ -80,19 +83,6 @@ const FilterBarComponent = (props) => {
     }
   }
 
-  function handleHideEmptyFilterOption() {
-    const elements = document.querySelectorAll(".filter-option");
-
-    for (let i = 0; i < elements.length; i++) {
-      const ele = elements[i];
-      let checlVal = ele.getAttribute("value");
-      // console.log(checlVal);
-      // if (checlVal === "" || checlVal === "undefined" || checlVal === null) {
-      //   ele.styel.display = "none";
-      // }
-    }
-  }
-
   function handleClearSelectedFilters() {
     const checkboxs = document.querySelectorAll(".filter-option");
 
@@ -112,15 +102,10 @@ const FilterBarComponent = (props) => {
       container.classList.remove("expand");
       Expandicon.classList.add("fa-angle-down");
       Expandicon.classList.remove("fa-angle-up");
-      // collaseIcon.classList.add("hide");
-      // collaseIcon.classList.remove("show");
     } else {
       container.classList.add("expand");
       Expandicon.classList.remove("fa-angle-down");
       Expandicon.classList.add("fa-angle-up");
-
-      // collaseIcon.classList.add("show");
-      // collaseIcon.classList.remove("hide");
     }
   }
 
@@ -143,113 +128,129 @@ const FilterBarComponent = (props) => {
     }
   }
 
-  return (
-    <div className="filter-container">
-      <div className="row">
-        <div className="col-3 mobile-menu">
-          <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
-        </div>
-        <div className="col-5 mobile-logo">
-          <img src={logo} className="logo" alt="logo" />
-        </div>
-        <div
-          className="col-md-2 col-4 mobile-filter"
-          style={{ cursor: "pointer" }}
-          onClick={handleToggleExpand}
-        >
-          <i className="fas fa-filter pe-1"></i>
-          進階選項<span className="mobile-hide">Filter by</span>
-          <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
-        </div>
+  if (setFilterBar !== "adfilter") {
+    return (
+      <div className="filter-container">
+        <div className="row">
+          <div className="col-3 mobile-menu">
+            <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
+          </div>
+          <div className="col-5 mobile-logo">
+            <img src={logo} className="logo" alt="logo" />
+          </div>
 
-        <div className="col-md-2 col-12">
-          <div>廣告格式: </div>
-          <div className="filter-option-box">
-            {filterdata.map((v, k) => {
-              if (v.ad_type === "" || v.ad_type === "undefined") {
-                return null;
-              } else {
-                return (
-                  <div
-                    className="filter-option"
-                    key={k}
-                    value={v.ad_type}
-                    onClick={handleCheckedOption}
-                  >
-                    {v.ad_type_label}
-                  </div>
-                );
-              }
-            })}
+          <div
+            className="col-md-2 col-4 mobile-filter"
+            style={{ cursor: "pointer" }}
+            onClick={handleToggleExpand}
+          >
+            <i className="fas fa-filter pe-1"></i>
+            進階選項<span className="mobile-hide">Filter by</span>
+            <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
+          </div>
+
+          <div className="col-md-2 col-12">
+            <div>廣告格式: </div>
+            <div className="filter-option-box">
+              {filterdata.map((v, k) => {
+                if (v.ad_type === "" || v.ad_type === "undefined") {
+                  return null;
+                } else {
+                  return (
+                    <div
+                      className="filter-option"
+                      key={k}
+                      value={v.ad_type}
+                      onClick={handleCheckedOption}
+                    >
+                      {v.ad_type_label}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
+
+          <div className="col-md-2 col-12">
+            <div>廣告用途: </div>
+            <div className="filter-option-box">
+              {filterdata.map((v, k) => {
+                if (v.ad_purpose === "" || v.ad_purpose === "undefined") {
+                  return null;
+                } else {
+                  return (
+                    <div
+                      className="filter-option"
+                      key={k}
+                      value={v.ad_purpose}
+                      onClick={handleCheckedOption}
+                    >
+                      {v.ad_purpose_label}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
+
+          <div className="col-md-2 col-12">
+            <div>支援裝置: </div>
+            <div className="filter-option-box">
+              {filterdata.map((v, k) => {
+                if (
+                  v.device === "null" ||
+                  v.device === "" ||
+                  v.device === "undefined"
+                ) {
+                  return null;
+                } else {
+                  return (
+                    <div
+                      className="filter-option"
+                      key={k}
+                      value={v.device}
+                      onClick={handleCheckedOption}
+                    >
+                      {v.device_label}
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
         </div>
+        <div className="row d-flex justify-content-center">
+          <button
+            id="collapseFilter"
+            type="button"
+            onClick={() => handleFilterClick(this)}
+          >
+            顯示結果
+          </button>
 
-        <div className="col-md-2 col-12">
-          <div>廣告用途: </div>
-          <div className="filter-option-box">
-            {filterdata.map((v, k) => {
-              if (v.ad_purpose === "" || v.ad_purpose === "undefined") {
-                return null;
-              } else {
-                return (
-                  <div
-                    className="filter-option"
-                    key={k}
-                    value={v.ad_purpose}
-                    onClick={handleCheckedOption}
-                  >
-                    {v.ad_purpose_label}
-                  </div>
-                );
-              }
-            })}
-          </div>
+          <button
+            type="button"
+            className="btn btn-inactive"
+            onClick={handleClearSelectedFilters}
+          >
+            取消篩選項目
+          </button>
         </div>
-
-        <div className="col-md-2 col-12">
-          <div>支援裝置: </div>
-          <div className="filter-option-box">
-            {filterdata.map((v, k) => {
-              if (
-                v.device === "null" ||
-                v.device === "" ||
-                v.device === "undefined"
-              ) {
-                return null;
-              } else {
-                return (
-                  <div
-                    className="filter-option"
-                    key={k}
-                    value={v.device}
-                    onClick={handleCheckedOption}
-                  >
-                    {v.device_label}
-                  </div>
-                );
-              }
-            })}
+      </div>
+    );
+  } else {
+    return (
+      <div className="filter-container adfilter">
+        <div className="row">
+          <div className="col-3 mobile-menu">
+            <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
+          </div>
+          <div className="col-5 mobile-logo">
+            <img src={logo} className="logo" alt="logo" />
           </div>
         </div>
       </div>
-      <div className="row d-flex justify-content-center">
-        <button
-          id="collapseFilter"
-          type="button"
-          onClick={() => handleFilterClick(this)}
-        >
-          顯示結果
-        </button>
-
-        <button
-          type="button"
-          className="btn btn-inactive"
-          onClick={handleClearSelectedFilters}
-        >
-          取消篩選項目
-        </button>
-      </div>
-    </div>
-  );
+    );
+  }
 };
 export default FilterBarComponent;

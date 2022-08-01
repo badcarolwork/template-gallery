@@ -66,28 +66,6 @@ const Gallery = () => {
     }
   }
 
-  function handleShowGifDemo(e) {
-    const parent = e.currentTarget.parentNode.id;
-    const imgSrc = document.querySelector("div#" + parent + " > img.rmThumb");
-    const playIcon = document.querySelector(
-      "div#" + parent + " > .show-gif > i"
-    );
-    const staticImgSrc = e.currentTarget.getAttribute("data-staticsrc");
-    const gifImgSrc = e.currentTarget.getAttribute("data-gifsrc");
-
-    if (e.currentTarget.parentNode.classList.contains("active")) {
-      e.currentTarget.parentNode.classList.remove("active");
-      imgSrc.setAttribute("src", staticImgSrc);
-      playIcon.classList.remove("fa-pause-circle");
-      playIcon.classList.add("fa-play-circle");
-    } else {
-      e.currentTarget.parentNode.classList.add("active");
-      imgSrc.setAttribute("src", gifImgSrc);
-      playIcon.classList.add("fa-pause-circle");
-      playIcon.classList.remove("fa-play-circle");
-    }
-  }
-
   function handleToggleModal(e) {
     setToggleModal(true);
     var selectedTemplate = e.currentTarget.getAttribute("data");
@@ -166,17 +144,6 @@ const Gallery = () => {
                     />
                   </a>
 
-                  <div
-                    className="show-gif"
-                    onClick={handleShowGifDemo}
-                    data-staticsrc={value.previmg}
-                    data-gifsrc={value.prevgif}
-                  >
-                    <i
-                      className="far fa-play-circle"
-                      style={{ display: "none" }}
-                    ></i>
-                  </div>
                   <div className="card-body text-start ps-3 pe-3">
                     <h5 className="card-title">{value.tempname}</h5>
                     {/* <div className="card-text">{value.desc}</div> */}

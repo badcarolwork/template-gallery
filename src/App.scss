@@ -66,8 +66,7 @@ main {
 div.main.content-right {
   display: flex;
   width: calc(100% - #{$sidebar-width});
-  max-height: calc(100vh - #{$filter-bar-top});
-
+  height:100vh;
 }
 
 div.content-bottom {
@@ -76,6 +75,11 @@ div.content-bottom {
   overflow-x: hidden;
   width: calc(100vw - #{$sidebar-width}) ;
   max-height: calc(100vh - #{$filter-bar-top});
+}
+
+div.content-bottom.ad-filter{
+  padding-top: 0;
+  max-height: 100%;
 }
 
 .btn {
@@ -158,12 +162,18 @@ main.mobile-view .main.content-right{
   div.content-bottom{
     width:100%;
     max-height: calc(100% - #{$filter-bar-top});
+
+    &.ad-filter{
+      padding-top: 50px;
+      height:100%;
+    }
   }
 }
+
 main.mobile-view .filter-container{
   width: calc(100% - 40px);
 }
-div.main.content-right {
+div.main.content-right {  
   &.expand{
     width: calc(100% - #{$sidebar-width});
   }

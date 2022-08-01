@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Gallery from "./pages/gallery/Gallery";
-import Showcase from "./pages/showcase/Showcase";
 import About from "./pages/About";
 import Sidebar from "./components/sideBar/sidebar";
 import "./App.scss";
 import ComingSoon from "./pages/comingSoon";
+import AdFilters from "./pages/adFilter/AdFilters";
 
 const App = () => {
   const [isMobileWidth, setMobileWidth] = useState(false);
@@ -38,7 +38,7 @@ const App = () => {
         <Routes>
           <Route path="/" className="active" element={<Gallery />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/showcase" element={<Showcase />} />
+          <Route path="/adfilter" element={<AdFilters />} />
           <Route path="/about" element={<About />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
         </Routes>

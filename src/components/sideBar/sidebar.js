@@ -47,6 +47,10 @@ const Siderbar = () => {
             互動廣告 <br />
             Intreactive Display Ad
           </CustomLink>
+          <CustomLink to="/adfilter">
+            廣告特效 <br />
+            PM AD Filter
+          </CustomLink>
         </ul>
         <footer>
           <span className="fw-light">© Performics Taiwan | Privacy Policy</span>
