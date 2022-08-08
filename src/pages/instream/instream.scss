@@ -1,0 +1,96 @@
+/*** PFX Styling ***/
+@import "../../App.scss";
+
+.rmThumb {
+  max-width: 300px;
+  width: auto !important;
+  height: 310px;
+  margin: auto;
+}
+.gallery-box {
+  display: flex;
+  position: relative;
+  margin-bottom:4rem;
+}
+.grid-layout {
+  padding: 0 1rem;
+
+  .show-gif {
+    position: absolute;
+    z-index: 1;
+    top: 21.5rem;
+    left: 8.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3rem;
+    padding: 0.1rem 0.2rem;
+    text-align: center;
+    cursor: pointer;
+    i {
+      font-size: 2rem;
+      align-self: center;
+      color: #04d257;
+    }
+  }
+}
+div.active {
+  div.show-gif {
+    i {
+      opacity: 0.5;
+      &.fa-pause-circle {
+        color: grey;
+      }
+    }
+  }
+}
+
+#no-result-alert {
+  width: 70vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+  text-align: center;
+}
+
+.new-label {
+  display: none;
+}
+
+.new .new-label {
+  display: block;
+  border-radius: 6px;
+  width: 50px;
+  height: 40px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+  background-color: #ff5656;
+  position: absolute; 
+  left:3rem;
+}
+
+.new-label:after {
+  content: "NEW";
+  color: #fff;
+  position: absolute;
+  left: 14%;
+  top: 10%;
+  font-weight: bold;
+}
+
+.mobile-view{
+  .new .new-label{
+    left:4.4rem;
+  }
+
+  div[name="data_container"]{
+    text-align:center;
+  }
+}

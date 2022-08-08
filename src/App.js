@@ -1,59 +1,50 @@
-import React, { useState } from 'react';
-import Gallery from './components/gallery/Gallery';
-import Showcase from './components/showcase/Showcase';
-import './App.scss';
-import logo from './img/performics_logo_white.svg';
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Gallery from "./pages/gallery/Gallery";
+import About from "./pages/About";
+import Sidebar from "./components/sideBar/sidebar";
+import "./App.scss";
+import ComingSoon from "./pages/comingSoon";
+import AdFilters from "./pages/adFilter/AdFilters";
 
 const App = () => {
-  const [showGallery, setshowGallery] = useState(true)
-  const [showShowcase, setshowShowcase] = useState(false)
+  const [isMobileWidth, setMobileWidth] = useState(false);
 
-  const renderGallery = () => {
-    setshowGallery(true)
-    setshowShowcase(false)
-  }
+  const handleWindowSizeChange = () => {
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 768) {
+      setMobileWidth(true);
+      document.getElementById("sidebar").classList.add("collapse");
+      document.getElementById("sidebar").classList.remove("expand");
+    } else {
+      setMobileWidth(false);
+      document.getElementById("sidebar").classList.add("expand");
+      document.getElementById("sidebar").classList.remove("collapse");
+    }
+  };
 
-  const renderShowcase = () => {
-    setshowShowcase(true)
-    setshowGallery(false)
-  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    handleWindowSizeChange();
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
   return (
-    <div className="container-fluid">
-
-      <header className="header">
-        <div className="container-lg">
-          <nav className="navbar">
-            <img src={logo} className="logo" width="200" alt="logo" />
-          </nav>
-          <div className="home-title d-flex text-white">
-            <div className="align-self-center">
-              <div className="fs-3">Rich Media</div>
-              <div className="fs-1">創意數位廣告</div>
-            </div>
-
-          </div>
-        </div>
-      </header>
-
-      <div className="container-lg">
-        <div>
-          <button onClick={renderGallery} className="m-4 btn btn-outline-primary">Rich Media Template</button>
-          <button onClick={renderShowcase} className="m-4 btn btn-outline-primary">Showcase</button>
-        </div>
-
-        {showGallery ? <Gallery></Gallery> : null}
-        {showShowcase ? <Showcase></Showcase> : null}
-
+    <main className={isMobileWidth ? "mobile-view" : ""}>
+      <Sidebar />
+      <div className="main content-right">
+        <Routes>
+          <Route path="/" className="active" element={<Gallery />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/adfilter" element={<AdFilters />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
+        </Routes>
       </div>
-
-      <footer>
-        <div className="container-lg mt-5 mb-3">
-          <span className="fs-6 fw-light">© 2019 Performics | Privacy Policy</span>
-        </div>
-      </footer>
-    </div>
-
+    </main>
   );
-}
+};
 
 export default App;

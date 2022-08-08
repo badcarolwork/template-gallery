@@ -1,0 +1,128 @@
+@import "../../App.scss";
+
+/** Mobile **/
+.mobile-view{
+
+  .filter-container{
+    width: calc(100% - 250px);
+    padding:20px;
+    background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
+
+    &.expand {
+     background:#fff;
+    }
+
+    .mobile-logo{
+      text-align:center;
+      display:block;
+  
+      .logo{
+        margin-top:-15px;
+        width:38%;
+        height:auto;
+      }
+    }    
+  }  
+  
+  .mobile-hide{
+    display:none;
+  }
+
+  .filter-container .mobile-menu{
+    font-size:1.3rem;
+    display:block;
+    margin-bottom:1.1rem;
+
+  }
+  .filter-container.expand{
+    height:90%;
+  }
+  .mobile-filter{
+    text-align: right;
+  }
+}
+
+.filter-container {
+  position: fixed;
+  // margin-top: -$filter-bar-top !important;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
+  padding: 20px 30px;
+  width: calc(100% - #{$sidebar-width});
+  overflow: hidden;
+  height: 20px;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.5s ease-in;
+
+  &.adfilter{
+    background-color: rgba(255,255,255,0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .mobile-logo{
+    display: none;
+  }
+
+  .mobile-menu{
+    display:none;
+  }  
+
+  &.expand {
+    overflow: inherit;
+    height:31%;
+
+    .filter-option-box {
+      margin-top: 10px;
+    }
+  }
+  label {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    width: 120px;
+    padding: 0.5em;
+    border: 0;
+    border-radius: 1em;
+    box-sizing: border-box;
+    font-weight: 300;
+    color: #fff;
+    background-color: #5cc381;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin:1rem 0.5rem;
+  }
+  
+  .bg {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
+    padding: 20px 30px !important;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .filter-option-box {
+    margin-top: 40px;
+
+    .filter-option {
+      cursor: pointer;
+      font-size: 12px;
+      padding: 5px;
+      border-radius: 10px;
+      border: #1e9a4b 1px solid;
+      text-align: center;
+      margin: 5px 0;
+    }
+  }
+
+  .checked {
+    background-color: #6bc4e6;
+    color: #fff;
+  }
+
+ 
+
+}
