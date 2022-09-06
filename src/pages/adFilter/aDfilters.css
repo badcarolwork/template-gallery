@@ -49,7 +49,6 @@ h5 {
 .show {
   display: block;
   opacity: 1;
-  -webkit-transition: all 0.5 ease-in;
   transition: all 0.5 ease-in;
 }
 
@@ -59,15 +58,11 @@ h5 {
 
 /*** PFX Styling ***/
 main {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 100%;
 }
 
 div.main.content-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: calc(100% - 250px);
   height: 100vh;
@@ -94,17 +89,14 @@ div.content-bottom.ad-filter {
   color: #ffffff;
   cursor: pointer;
 }
-
 .btn.btn-primary {
   background-color: #52c27a;
 }
-
 .btn.btn-secondary {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #52c27a;
   color: #3c3c3c;
 }
-
 .btn.btn-inactive {
   background-color: rgba(0, 0, 0, 0);
   text-decoration: underline;
@@ -123,7 +115,6 @@ div.content-bottom.ad-filter {
   height: 100%;
   padding-top: 10%;
 }
-
 .coming-container h1 {
   display: block;
   font-size: 5rem;
@@ -173,23 +164,20 @@ div.content-bottom.ad-filter {
     stroke-dashoffset: -3350;
   }
 }
-
 main.mobile-view .main.content-right {
   width: 100%;
 }
-
 main.mobile-view .main.content-right div.content-bottom {
   width: 100%;
   max-height: calc(100% - 85px);
 }
+main.mobile-view .main.content-right div.content-bottom.ad-filter {
+  padding-top: 50px;
+  height: 100%;
+}
 
 main.mobile-view .filter-container {
   width: calc(100% - 40px);
-}
-
-div.main.content-right div.content-bottom.ad-filter {
-  padding-top: 50px;
-  height: 100%;
 }
 
 div.main.content-right.expand {
@@ -199,21 +187,17 @@ div.main.content-right.expand {
 .ad-filter .thumbs video {
   max-width: 300px;
 }
-
 .ad-filter .title {
   width: 60%;
   margin: 1rem auto 2rem;
   padding: 1.7rem;
-  -webkit-box-shadow: 0px 13px 11px -8px rgba(51, 51, 0, 0.3);
-          box-shadow: 0px 13px 11px -8px rgba(51, 51, 0, 0.3);
+  box-shadow: 0px 13px 11px -8px rgba(51, 51, 0, 0.3);
   border-radius: 0.5rem;
 }
-
 .ad-filter .title .heading {
   font-size: 1.3rem;
   color: #008000;
 }
-
 .ad-filter .title .heading span {
   font-size: 13px;
   font-weight: 500;
@@ -228,15 +212,9 @@ div.main.content-right.expand {
 main.mobile-view .ad-filter .title {
   width: 100%;
 }
-
 main.mobile-view .ad-filter .demo-btn {
   margin: auto;
   width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-/*# sourceMappingURL=aDfilters.css.map */
+  justify-content: center;
+}/*# sourceMappingURL=adFilters.css.map */

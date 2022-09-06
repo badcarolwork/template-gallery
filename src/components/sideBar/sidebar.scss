@@ -23,7 +23,12 @@ nav.sidebar {
   }
 
     .home-title{
-        font-size:1.5rem;
+        font-size:1.3rem;
+        font-weight:bold;
+        border-bottom: 1px solid;
+        border-color:rgba(255,255,255,0.5);
+
+        
     }
   
     #nav-group {
@@ -39,7 +44,7 @@ nav.sidebar {
         display: block;
         margin-bottom: 5%;
         color: #fff;
-        width: calc(100% + #{$nav-button-left});
+        width: calc(100% + #{$nav-button-left} + 23px);
         min-height: 50px;
         display:flex;
         align-items: center;
@@ -57,7 +62,11 @@ nav.sidebar {
         }
       }
     }
-  
+    
+    .sidebar-content{
+      width:90%;
+    }
+
     footer {
       position: absolute;
       bottom: 20px;

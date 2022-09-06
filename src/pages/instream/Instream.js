@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import FilterBarComponent from "../../components/filterBar/filterBarComponent";
 import "./instream.scss";
 
-const Gallery = () => {
+const InStream = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
-  const [toggleModal, setToggleModal] = useState(false);
-  let [selectedDatas, setSelectedDatas] = useState([]);
   const mainUrl = process.env.REACT_APP_MAINURL;
 
   const filterDataGallery = (resData) => {
@@ -29,17 +28,6 @@ const Gallery = () => {
     setLoading(true);
   };
 
-  function handleToggleModal(e) {
-    setToggleModal(true);
-    var selectedTemplate = e.currentTarget.getAttribute("data");
-
-    gallery.forEach((v) => {
-      if (v.tempid === selectedTemplate) {
-        setSelectedDatas(v);
-      }
-    });
-  }
-
   useEffect(() => {
     const getAPI = function () {
       fetch(
@@ -60,21 +48,53 @@ const Gallery = () => {
     getAPI();
   }, []);
 
+  function handlePlayDemo(e) {}
+
   return (
     <div>
-      {console.log(gallery)}
-      <div className="content-bottom">
-        {toggleModal && (
-          <Modal toggleModal={setToggleModal} data={selectedDatas} />
-        )}
-
+      <FilterBarComponent parent="adfilter" />
+      <div className="content-bottom ad-filter">
         {!loading ? (
           <ClipLoader color={color} size={180}></ClipLoader>
         ) : (
           <div className="grid-layout row">
-            <div id="no-result-alert" className="alert-box">
-              無法查到符合篩選條件之格式, 請再選擇相關選項.
+            <div className="title col-12 col-md-12">
+              <div className="heading">
+                互動影音 Interactive Video Ad
+                <span>
+                  在in-stream影音廣告加入互動元素, 讓用戶與品牌廣告進行互動,
+                  增加對品牌的印象. Performics提供客製化互動廣告提案與製作.
+                </span>
+              </div>
             </div>
+            {gallery.map((v, k) => {
+              return (
+                <div className="col-12 col-md-6 d-flex mb-5" key={k}>
+                  <div className="row">
+                    <div className="col-12 col-md-8 thumbs text-center">
+                      <button className="btn play-btn" onClick={handlePlayDemo}>
+                        <i className="fas fa-play pe-2"></i>播放Demo
+                      </button>
+                      <img src={v.previmg} />
+
+                      {/* <video muted autoPlay playsInline loop>
+                        <source src={v.prevvid} type="video/mp4" />
+                      </video> */}
+                    </div>
+                    <div className="col-12 col-md-4 desc-box">
+                      <h5 className="card-title">{v.tempname}</h5>
+                      <span>{v.desc}</span>
+                      <br />
+                      <a href={v.demolink} target="_blank" rel="noreferrer">
+                        <button className="btn btn-primary mt-3 demo-btn">
+                          Demo
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
@@ -82,4 +102,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default InStream;

@@ -48,7 +48,6 @@ h5 {
 .show {
   display: block;
   opacity: 1;
-  -webkit-transition: all 0.5 ease-in;
   transition: all 0.5 ease-in;
 }
 
@@ -58,15 +57,11 @@ h5 {
 
 /*** PFX Styling ***/
 main {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 100%;
 }
 
 div.main.content-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: calc(100% - 250px);
   height: 100vh;
@@ -93,17 +88,14 @@ div.content-bottom.ad-filter {
   color: #ffffff;
   cursor: pointer;
 }
-
 .btn.btn-primary {
   background-color: #52c27a;
 }
-
 .btn.btn-secondary {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #52c27a;
   color: #3c3c3c;
 }
-
 .btn.btn-inactive {
   background-color: rgba(0, 0, 0, 0);
   text-decoration: underline;
@@ -122,7 +114,6 @@ div.content-bottom.ad-filter {
   height: 100%;
   padding-top: 10%;
 }
-
 .coming-container h1 {
   display: block;
   font-size: 5rem;
@@ -172,22 +163,20 @@ div.content-bottom.ad-filter {
     stroke-dashoffset: -3350;
   }
 }
-
 main.mobile-view .main.content-right {
   width: 100%;
 }
-
 main.mobile-view .main.content-right div.content-bottom {
   width: 100%;
   max-height: calc(100% - 85px);
 }
+main.mobile-view .main.content-right div.content-bottom.ad-filter {
+  padding-top: 50px;
+  height: 100%;
+}
 
 main.mobile-view .filter-container {
   width: calc(100% - 40px);
-}
-
-div.main.content-right div.content-bottom.ad-filter {
-  padding-top: 85px;
 }
 
 div.main.content-right.expand {
@@ -200,36 +189,29 @@ div.main.content-right.expand {
   padding: 20px;
   background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
 }
-
 .mobile-view .filter-container.expand {
   background: #fff;
 }
-
 .mobile-view .filter-container .mobile-logo {
   text-align: center;
   display: block;
 }
-
 .mobile-view .filter-container .mobile-logo .logo {
   margin-top: -15px;
   width: 38%;
   height: auto;
 }
-
 .mobile-view .mobile-hide {
   display: none;
 }
-
 .mobile-view .filter-container .mobile-menu {
   font-size: 1.3rem;
   display: block;
   margin-bottom: 1.1rem;
 }
-
 .mobile-view .filter-container.expand {
   height: 90%;
 }
-
 .mobile-view .mobile-filter {
   text-align: right;
 }
@@ -237,79 +219,61 @@ div.main.content-right.expand {
 .filter-container {
   position: fixed;
   background-color: #ffffff;
-  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
-          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
   padding: 20px 30px;
   width: calc(100% - 250px);
   overflow: hidden;
   height: 20px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   z-index: 1000;
-  -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
 }
-
 .filter-container.adfilter {
   background-color: rgba(255, 255, 255, 0);
-  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
-
 .filter-container .mobile-logo {
   display: none;
 }
-
 .filter-container .mobile-menu {
   display: none;
 }
-
 .filter-container.expand {
   overflow: inherit;
   height: 31%;
 }
-
 .filter-container.expand .filter-option-box {
   margin-top: 10px;
 }
-
 .filter-container label {
   font-size: 14px;
   margin-bottom: 30px;
 }
-
 .filter-container button {
   width: 120px;
   padding: 0.5em;
   border: 0;
   border-radius: 1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-weight: 300;
   color: #fff;
   background-color: #5cc381;
   text-align: center;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
   cursor: pointer;
   margin: 1rem 0.5rem;
 }
-
 .filter-container .bg {
   width: 100%;
   background-color: #fff;
-  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
-          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.52);
   padding: 20px 30px !important;
   margin-right: 0;
   margin-left: 0;
 }
-
 .filter-container .filter-option-box {
   margin-top: 40px;
 }
-
 .filter-container .filter-option-box .filter-option {
   cursor: pointer;
   font-size: 12px;
@@ -319,9 +283,7 @@ div.main.content-right.expand {
   text-align: center;
   margin: 5px 0;
 }
-
 .filter-container .checked {
   background-color: #6bc4e6;
   color: #fff;
-}
-/*# sourceMappingURL=filterBarComponent.css.map */
+}/*# sourceMappingURL=filterBarComponent.css.map */

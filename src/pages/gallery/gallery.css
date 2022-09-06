@@ -49,7 +49,6 @@ h5 {
 .show {
   display: block;
   opacity: 1;
-  -webkit-transition: all 0.5 ease-in;
   transition: all 0.5 ease-in;
 }
 
@@ -59,15 +58,11 @@ h5 {
 
 /*** PFX Styling ***/
 main {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 100%;
 }
 
 div.main.content-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: calc(100% - 250px);
   height: 100vh;
@@ -94,17 +89,14 @@ div.content-bottom.ad-filter {
   color: #ffffff;
   cursor: pointer;
 }
-
 .btn.btn-primary {
   background-color: #52c27a;
 }
-
 .btn.btn-secondary {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #52c27a;
   color: #3c3c3c;
 }
-
 .btn.btn-inactive {
   background-color: rgba(0, 0, 0, 0);
   text-decoration: underline;
@@ -123,7 +115,6 @@ div.content-bottom.ad-filter {
   height: 100%;
   padding-top: 10%;
 }
-
 .coming-container h1 {
   display: block;
   font-size: 5rem;
@@ -173,22 +164,20 @@ div.content-bottom.ad-filter {
     stroke-dashoffset: -3350;
   }
 }
-
 main.mobile-view .main.content-right {
   width: 100%;
 }
-
 main.mobile-view .main.content-right div.content-bottom {
   width: 100%;
   max-height: calc(100% - 85px);
 }
+main.mobile-view .main.content-right div.content-bottom.ad-filter {
+  padding-top: 50px;
+  height: 100%;
+}
 
 main.mobile-view .filter-container {
   width: calc(100% - 40px);
-}
-
-div.main.content-right div.content-bottom.ad-filter {
-  padding-top: 85px;
 }
 
 div.main.content-right.expand {
@@ -203,8 +192,6 @@ div.main.content-right.expand {
 }
 
 .gallery-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   margin-bottom: 4rem;
@@ -213,7 +200,6 @@ div.main.content-right.expand {
 .grid-layout {
   padding: 0 1rem;
 }
-
 .grid-layout .show-gif {
   position: absolute;
   z-index: 1;
@@ -225,19 +211,15 @@ div.main.content-right.expand {
   text-align: center;
   cursor: pointer;
 }
-
 .grid-layout .show-gif i {
   font-size: 2rem;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   color: #04d257;
 }
 
 div.active div.show-gif i {
   opacity: 0.5;
 }
-
 div.active div.show-gif i.fa-pause-circle {
   color: grey;
 }
@@ -280,8 +262,6 @@ div.active div.show-gif i.fa-pause-circle {
 .mobile-view .new .new-label {
   left: 4.4rem;
 }
-
-.mobile-view div[name="data_container"] {
+.mobile-view div[name=data_container] {
   text-align: center;
-}
-/*# sourceMappingURL=gallery.css.map */
+}/*# sourceMappingURL=gallery.css.map */

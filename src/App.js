@@ -6,6 +6,7 @@ import Sidebar from "./components/sideBar/sidebar";
 import "./App.scss";
 import ComingSoon from "./pages/comingSoon";
 import AdFilters from "./pages/adFilter/AdFilters";
+import InStream from "./pages/instream/InStream";
 
 const App = () => {
   const [isMobileWidth, setMobileWidth] = useState(false);
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/" className="active" element={<Gallery />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/adfilter" element={<AdFilters />} />
+          <Route path="/instream" element={<InStream />} />
           <Route path="/about" element={<About />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
         </Routes>

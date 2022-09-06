@@ -33,12 +33,12 @@ const Siderbar = () => {
     <nav id="sidebar" className="sidebar">
       <div className="sidebar-content js-simplebar">
         <div className="navbar mb-4">
-          <img src={logo} className="logo" width="170" alt="logo" />
+          <img src={logo} className="logo" width="120" alt="logo" />
         </div>
 
-        <div className="home-title d-flex text-white">
+        <div className="home-title d-flex text-white mb-4">
           <div className="align-self-center">
-            <div className="mb-4">Interactive Ad Gallery</div>
+            <div className="mb-2">Experience Creative Lab</div>
           </div>
         </div>
 
