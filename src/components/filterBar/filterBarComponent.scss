@@ -70,7 +70,8 @@
 
   &.expand {
     overflow: inherit;
-    height:31%;
+    min-height:10%;
+    height:auto;
 
     .filter-option-box {
       margin-top: 10px;
@@ -116,6 +117,18 @@
       text-align: center;
       margin: 5px 0;
     }
+
+    &.brands{
+      display:flex;
+      width:100%;
+      
+      .filter-option {
+        width:auto;
+        margin:0 0.5rem;
+        padding:0.5rem 1rem;
+      }
+    }
+    
   }
 
   .checked {

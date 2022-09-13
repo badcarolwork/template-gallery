@@ -10,8 +10,6 @@ const Gallery = () => {
   let [color] = useState("#1E9A4B");
   const [toggleModal, setToggleModal] = useState(false);
   let [selectedDatas, setSelectedDatas] = useState([]);
-  const videoRef = useRef(null);
-  const mainUrl = process.env.REACT_APP_MAINURL;
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -97,27 +95,6 @@ const Gallery = () => {
     };
 
     getAPI();
-    let options = {
-      rootMargin: "0px",
-      threshold: [0.5],
-    };
-
-    let videoElements = document.querySelectorAll("video");
-
-    videoElements.forEach((ele) => {
-      let handlePlay = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            videoRef.current.play();
-          } else {
-            videoRef.current.pause();
-          }
-        });
-      };
-
-      let observer = new IntersectionObserver(handlePlay, options);
-      observer.observe(ele);
-    });
   }, []);
 
   return (
@@ -154,19 +131,14 @@ const Gallery = () => {
                   <div className="new-label"></div>
                   <a
                     className="text-center"
-                    href={mainUrl + value.demolink}
+                    href={value.demolink}
                     data-temp={value.tempid}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <video
-                      ref={videoRef}
-                      src={mainUrl + value.adthumb}
-                      muted
-                      playsInline
-                    ></video>
+                    <video src={value.adthumb} muted playsInline></video>
                     {/* <img
-                      src={mainUrl + value.previmg}
+                      src={value.previmg}
                       alt="pfxrichmedia"
                       className={value.tempid + " card-img-top rmThumb"}
                       loading="lazy"
@@ -187,12 +159,14 @@ const Gallery = () => {
                   </div>
                   <div className="card-text mt-auto ps-3 pe-3">
                     <a
-                      href={mainUrl + value.demolink}
+                      href={value.demolink}
                       data-temp={value.tempid}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <button className="btn btn-primary">Demo</button>
+                      <button className="btn btn-primary">
+                        View and interact with Ad
+                      </button>
                     </a>
 
                     <button

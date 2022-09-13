@@ -7,7 +7,6 @@ const AdFilters = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
-  const mainUrl = process.env.REACT_APP_MAINURL;
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -80,7 +79,7 @@ const AdFilters = () => {
                       <br />
                       <a href={v.demolink} target="_blank" rel="noreferrer">
                         <button className="btn btn-primary mt-3 demo-btn">
-                          Demo
+                          View and interact with Ad
                         </button>
                       </a>
                     </div>

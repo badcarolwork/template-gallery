@@ -1,16 +1,15 @@
 /*** PFX Styling ***/
 @import "../../App.scss";
 
-.ad-filter{
+.instream{
   .thumbs{
     position: relative;
 
     img{
       width:100%
     }
-
     video{
-      max-width:300px;
+      width:95%;
     }
 
     .play-btn{
@@ -30,6 +29,7 @@
       top:0;
       bottom:0;
       opacity:0.8;
+      display: none;
     }
   }
 

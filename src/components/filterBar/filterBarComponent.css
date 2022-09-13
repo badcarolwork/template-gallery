@@ -240,7 +240,8 @@ div.main.content-right.expand {
 }
 .filter-container.expand {
   overflow: inherit;
-  height: 31%;
+  min-height: 10%;
+  height: auto;
 }
 .filter-container.expand .filter-option-box {
   margin-top: 10px;
@@ -282,6 +283,15 @@ div.main.content-right.expand {
   border: #1e9a4b 1px solid;
   text-align: center;
   margin: 5px 0;
+}
+.filter-container .filter-option-box.brands {
+  display: flex;
+  width: 100%;
+}
+.filter-container .filter-option-box.brands .filter-option {
+  width: auto;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
 }
 .filter-container .checked {
   background-color: #6bc4e6;

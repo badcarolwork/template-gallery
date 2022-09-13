@@ -128,7 +128,81 @@ const FilterBarComponent = (props) => {
     }
   }
 
-  if (setFilterBar !== "adfilter") {
+  if (setFilterBar === "adfilter") {
+    return (
+      <div className="filter-container adfilter">
+        <div className="row">
+          <div className="col-3 mobile-menu">
+            <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
+          </div>
+          <div className="col-5 mobile-logo">
+            <img src={logo} className="logo" alt="logo" />
+          </div>
+        </div>
+      </div>
+    );
+  } else if (setFilterBar === "instream") {
+    return (
+      <div className="filter-container">
+        <div className="row">
+          <div className="col-3 mobile-menu">
+            <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
+          </div>
+          <div className="col-5 mobile-logo">
+            <img src={logo} className="logo" alt="logo" />
+          </div>
+
+          <div
+            className="col-md-12 col-12 mobile-filter"
+            style={{ cursor: "pointer" }}
+            onClick={handleToggleExpand}
+          >
+            <i className="far fa-star pe-1"></i>
+            Experience by Brand:
+            <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
+          </div>
+
+          <div className="col-md-12 col-12">
+            <div className="filter-option-box brands">
+              {filterdata.map((v, k) => {
+                if (v.brand === "" || v.brand === "undefined") {
+                  return null;
+                } else {
+                  return (
+                    <div
+                      className="filter-option"
+                      key={k}
+                      value={v.brand}
+                      onClick={handleCheckedOption}
+                    >
+                      {v.brand}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="row d-flex justify-content-center">
+          <button
+            id="collapseFilter"
+            type="button"
+            onClick={() => handleFilterClick(this)}
+          >
+            顯示結果
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-inactive"
+            onClick={handleClearSelectedFilters}
+          >
+            取消篩選項目
+          </button>
+        </div>
+      </div>
+    );
+  } else {
     return (
       <div className="filter-container">
         <div className="row">
@@ -235,19 +309,6 @@ const FilterBarComponent = (props) => {
           >
             取消篩選項目
           </button>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="filter-container adfilter">
-        <div className="row">
-          <div className="col-3 mobile-menu">
-            <i className="fas fa-bars" onClick={handleToggleSidebar}></i>
-          </div>
-          <div className="col-5 mobile-logo">
-            <img src={logo} className="logo" alt="logo" />
-          </div>
         </div>
       </div>
     );
