@@ -48,11 +48,10 @@ const InStream = () => {
   }, []);
 
   function sorting(v) {
-    console.log(v);
     setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
     document.getElementById("no-result-alert").style.display = "none";
-    let noVisible = 0;
+    let visibleElement = 0;
 
     setLoading(true);
 
@@ -63,20 +62,19 @@ const InStream = () => {
     } else {
       for (let i = 0; i < v.length; i++) {
         const eachValue = v[i];
-
         for (let c = 0; c < containers.length; c++) {
           const currentTarget = containers[c];
 
           if (currentTarget.classList.contains(eachValue)) {
             currentTarget.style.display = "flex";
             document.getElementById("no-result-alert").style.display = "none";
+            visibleElement++;
+            console.log(visibleElement);
           } else {
             currentTarget.style.display = "none";
-            noVisible++;
-            if (noVisible === v.length) {
-              document.getElementById("no-result-alert").style.display =
-                "block";
-            }
+          }
+          if (visibleElement <= 0) {
+            document.getElementById("no-result-alert").style.display = "block";
           }
         }
       }
@@ -106,7 +104,7 @@ const InStream = () => {
             {gallery.map((v, k) => {
               return (
                 <div
-                  className={v.brand + "col-12 col-md-6 d-flex mb-5"}
+                  className={v.brand + " col-12 col-md-6 dFlex mb-5"}
                   key={k}
                   name="data_container"
                 >

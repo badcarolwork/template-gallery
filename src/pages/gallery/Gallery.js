@@ -9,7 +9,7 @@ const Gallery = () => {
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
   const [toggleModal, setToggleModal] = useState(false);
-  let [selectedDatas, setSelectedDatas] = useState([]);
+  // let [selectedDatas, setSelectedDatas] = useState([]);
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -103,7 +103,8 @@ const Gallery = () => {
       {/* {console.log(gallery)} */}
       <div className="content-bottom">
         {toggleModal && (
-          <Modal toggleModal={setToggleModal} data={selectedDatas} />
+          // <Modal toggleModal={setToggleModal} data={selectedDatas} />
+          <Modal toggleModal={setToggleModal} />
         )}
 
         {!loading ? (

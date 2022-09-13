@@ -45,8 +45,12 @@ h5 {
           margin-block-end: 1rem;
 }
 
+.dFlex {
+  display: flex;
+}
+
 .hide {
-  display: none;
+  display: none !important;
   opacity: 0;
 }
 
