@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import FilterBarComponent from "../../components/filterBar/filterBarComponent";
 import Modal from "../../components/modal/Modal";
@@ -65,16 +65,16 @@ const Gallery = () => {
     }
   }
 
-  function handleToggleModal(e) {
-    setToggleModal(true);
-    var selectedTemplate = e.currentTarget.getAttribute("data");
+  // function handleToggleModal(e) {
+  //   setToggleModal(true);
+  //   var selectedTemplate = e.currentTarget.getAttribute("data");
 
-    gallery.forEach((v) => {
-      if (v.tempid === selectedTemplate) {
-        setSelectedDatas(v);
-      }
-    });
-  }
+  //   gallery.forEach((v) => {
+  //     if (v.tempid === selectedTemplate) {
+  //       setSelectedDatas(v);
+  //     }
+  //   });
+  // }
 
   useEffect(() => {
     const getAPI = function () {

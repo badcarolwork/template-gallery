@@ -48,6 +48,7 @@ const InStream = () => {
   }, []);
 
   function sorting(v) {
+    console.log(v);
     setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
     document.getElementById("no-result-alert").style.display = "none";
