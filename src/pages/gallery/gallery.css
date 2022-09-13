@@ -200,6 +200,10 @@ div.main.content-right.expand {
 .grid-layout {
   padding: 0 1rem;
 }
+.grid-layout video {
+  width: 70%;
+  height: auto;
+}
 .grid-layout .show-gif {
   position: absolute;
   z-index: 1;

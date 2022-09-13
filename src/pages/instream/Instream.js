@@ -58,7 +58,7 @@ const InStream = () => {
           <ClipLoader color={color} size={180}></ClipLoader>
         ) : (
           <div className="grid-layout row">
-            <div className="title col-12 col-md-12">
+            {/* <div className="title col-12 col-md-12">
               <div className="heading">
                 互動影音 Interactive Video Ad
                 <span>
@@ -66,7 +66,7 @@ const InStream = () => {
                   增加對品牌的印象. Performics提供客製化互動廣告提案與製作.
                 </span>
               </div>
-            </div>
+            </div> */}
             {gallery.map((v, k) => {
               return (
                 <div className="col-12 col-md-6 d-flex mb-5" key={k}>
