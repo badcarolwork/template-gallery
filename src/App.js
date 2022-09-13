@@ -6,7 +6,7 @@ import Sidebar from "./components/sideBar/sidebar";
 import "./App.scss";
 import ComingSoon from "./pages/comingSoon";
 import AdFilters from "./pages/adFilter/AdFilters";
-import InStream from "./pages/instream/InStream";
+import InStream from "./pages/instream/Instream";
 
 const App = () => {
   const [isMobileWidth, setMobileWidth] = useState(false);
