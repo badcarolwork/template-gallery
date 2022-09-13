@@ -1,3 +1,4 @@
+/*** PFX Styling ***/
 body,
 html {
   margin: 0;
@@ -26,11 +27,6 @@ a {
 
 .icon-text-size {
   font-size: 1.2rem;
-}
-
-.descText {
-  font-size: 0.6rem;
-  color: #5f5f5f;
 }
 
 .text-center {
@@ -86,13 +82,12 @@ div.content-bottom.ad-filter {
 }
 
 .btn {
-  font-size: 13px;
+  font-size: 15px;
   border: 0;
-  border-radius: 0.3rem;
-  padding: 0.8rem 0.8rem;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
   color: #ffffff;
   cursor: pointer;
-  text-align: left;
 }
 .btn.btn-primary {
   background-color: #52c27a;
@@ -112,16 +107,6 @@ div.content-bottom.ad-filter {
   padding: 2rem 1rem;
   border: 1px solid #52c27a;
   width: 100%;
-  text-align: center;
-}
-
-#no-result-alert {
-  width: 70vw;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: none;
   text-align: center;
 }
 
@@ -197,4 +182,64 @@ main.mobile-view .filter-container {
 
 div.main.content-right.expand {
   width: calc(100% - 250px);
-}/*# sourceMappingURL=App.css.map */
+}
+
+.instream .thumbs {
+  position: relative;
+}
+.instream .thumbs img {
+  width: 100%;
+}
+.instream .thumbs video {
+  width: 95%;
+}
+.instream .thumbs .play-btn {
+  position: absolute;
+  z-index: 10;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #008000;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #008000;
+  font-size: 1rem;
+  text-align: center;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.8;
+  display: none;
+}
+.instream .title {
+  width: 60%;
+  margin: 1rem auto 2rem;
+  padding: 1.7rem;
+  box-shadow: 0px 13px 11px -8px rgba(51, 51, 0, 0.3);
+  border-radius: 0.5rem;
+}
+.instream .title .heading {
+  font-size: 1.3rem;
+  color: #008000;
+}
+.instream .title .heading span {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 2em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.4);
+  padding-bottom: 10px;
+}
+
+/** Mobile site **/
+main.mobile-view .ad-filter .title {
+  width: 100%;
+}
+main.mobile-view .ad-filter .demo-btn {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=instream.css.map */

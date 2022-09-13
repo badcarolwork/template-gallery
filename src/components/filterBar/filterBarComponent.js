@@ -214,12 +214,12 @@ const FilterBarComponent = (props) => {
           </div>
 
           <div
-            className="col-md-2 col-4 mobile-filter"
+            className="col-md-3 col-4 mobile-filter"
             style={{ cursor: "pointer" }}
             onClick={handleToggleExpand}
           >
-            <i className="fas fa-filter pe-1"></i>
-            進階選項<span className="mobile-hide">Filter by</span>
+            <i className="fas fa-lightbulb pe-1"></i>
+            Experience by your need:
             <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
           </div>
 

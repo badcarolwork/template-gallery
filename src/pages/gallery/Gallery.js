@@ -147,7 +147,7 @@ const Gallery = () => {
 
                   <div className="card-body text-start ps-3 pe-3">
                     <h5 className="card-title">{value.tempname}</h5>
-                    {/* <div className="card-text">{value.desc}</div> */}
+                    <div className="card-text descText">{value.desc}</div>
                   </div>
                   <div className="card-text mt-auto pb-2 ps-3 pe-3">
                     {value.devicepc === "TRUE" ? (
@@ -169,13 +169,13 @@ const Gallery = () => {
                       </button>
                     </a>
 
-                    <button
+                    {/* <button
                       className="ms-3 btn btn-secondary"
                       onClick={handleToggleModal}
                       data={value.tempid}
                     >
                       More Info
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               );
