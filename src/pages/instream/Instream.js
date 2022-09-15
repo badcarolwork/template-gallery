@@ -16,16 +16,69 @@ const InStream = () => {
       data = newData,
       cols = keys,
       l = cols.length;
+
     for (var i = 0; i < data.length; i++) {
       var d = data[i],
         o = {};
       for (var j = 0; j < l; j++) o[cols[j]] = d[j];
       formatted.push(o);
     }
-    setGallery(formatted);
-
-    setLoading(true);
+    handleSetGalleryData(formatted);
   };
+
+  const handleSetGalleryData = (data) => {
+    setGallery(data);
+    setLoading(true);
+
+    tidyDescription();
+  };
+
+  const tidyDescription = () => {
+    const describes = document.querySelectorAll(".desc-box ul");
+
+    describes.forEach((d) => {
+      if (typeof d.textContent !== "undefined" || typeof d.textContent !== "") {
+        if (d.textContent.includes("-")) {
+          const newContent = d.textContent.replace(/-/g, "<li>");
+          console.log(newContent);
+          d.innerHTML = newContent;
+        }
+      }
+    });
+  };
+
+  function sorting(v) {
+    const containers = document.querySelectorAll('div[name="data_container"]');
+    const alertBox = document.getElementById("no-result-alert");
+
+    if (v.length <= 0 || v.length === "") {
+      for (let i = 0; i < containers.length; i++) {
+        containers[i].style.display = "flex";
+      }
+    } else {
+      for (let i = 0; i < v.length; i++) {
+        let eachValue = v[i];
+        for (let c = 0; c < containers.length; c++) {
+          const currentTarget = containers[c];
+          currentTarget.style.display = "none";
+          alertBox.style.display = "block";
+          alertBox.innerHTML = "Searching, please wait...";
+          if (currentTarget.classList.contains(eachValue)) {
+            setLoading(false);
+            setTimeout(() => {
+              currentTarget.style.display = "flex";
+              alertBox.style.display = "none";
+            }, 500);
+            setLoading(true);
+          } else {
+            setTimeout(() => {
+              alertBox.innerHTML = "No results found.";
+            }, 500);
+          }
+        }
+      }
+    }
+  }
 
   useEffect(() => {
     const getAPI = function () {
@@ -46,40 +99,6 @@ const InStream = () => {
     };
     getAPI();
   }, []);
-
-  function sorting(v) {
-    setLoading(false);
-    const containers = document.querySelectorAll('div[name="data_container"]');
-    document.getElementById("no-result-alert").style.display = "none";
-    let visibleElement = 0;
-
-    setLoading(true);
-
-    if (v.length <= 0) {
-      for (let i = 0; i < containers.length; i++) {
-        containers[i].style.display = "flex";
-      }
-    } else {
-      for (let i = 0; i < v.length; i++) {
-        const eachValue = v[i];
-        for (let c = 0; c < containers.length; c++) {
-          const currentTarget = containers[c];
-
-          if (currentTarget.classList.contains(eachValue)) {
-            currentTarget.style.display = "flex";
-            document.getElementById("no-result-alert").style.display = "none";
-            visibleElement++;
-            console.log(visibleElement);
-          } else {
-            currentTarget.style.display = "none";
-          }
-          if (visibleElement <= 0) {
-            document.getElementById("no-result-alert").style.display = "block";
-          }
-        }
-      }
-    }
-  }
 
   return (
     <div>
@@ -121,7 +140,7 @@ const InStream = () => {
                     </div>
                     <div className="col-12 col-md-4 desc-box">
                       <h5 className="card-title">{v.tempname}</h5>
-                      <span>{v.desc}</span>
+                      <ul>{v.desc}</ul>
                       <br />
                       <a href={v.demolink} target="_blank" rel="noreferrer">
                         <button className="btn btn-primary mt-3 demo-btn">

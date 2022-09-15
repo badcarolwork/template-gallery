@@ -49,15 +49,23 @@ h5 {
   display: flex;
 }
 
+.show {
+  display: block;
+  opacity: 1;
+  transition: all 0.5 ease-in;
+}
+
 .hide {
   display: none !important;
   opacity: 0;
 }
 
-.show {
-  display: block;
-  opacity: 1;
-  transition: all 0.5 ease-in;
+.showDiv {
+  display: flex;
+}
+
+.hideDiv {
+  display: none !important;
 }
 
 .text-lightGrey {

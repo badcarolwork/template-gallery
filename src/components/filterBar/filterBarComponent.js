@@ -75,11 +75,12 @@ const FilterBarComponent = (props) => {
 
     for (let i = 0; i < checkboxs.length; i++) {
       const selectedVal = checkboxs[i].getAttribute("value");
-      // console.log(checkboxs[i].classList.contains("checked"));
+      let checkedVal = checkboxs[i].classList.contains("checked");
       if (checkboxs[i].classList.contains("checked")) {
         selectedOptions.push(selectedVal);
         props.handleSorting(selectedOptions);
       }
+      // here to write checking :  if all dun hv checked then need to clean the array.
     }
   }
 

@@ -33,36 +33,27 @@ const Gallery = () => {
   function sorting(v) {
     setLoading(false);
     const containers = document.querySelectorAll('div[name="data_container"]');
-    document.getElementById("no-result-alert").style.display = "none";
-    let noVisible = 0;
+    const alertBox = document.getElementById("no-result-alert");
 
-    setLoading(true);
-
-    if (v.length <= 0) {
+    if (v.length <= 0 || v.length === "") {
       for (let i = 0; i < containers.length; i++) {
         containers[i].style.display = "flex";
       }
     } else {
       for (let i = 0; i < v.length; i++) {
         const eachValue = v[i];
-
         for (let c = 0; c < containers.length; c++) {
           const currentTarget = containers[c];
-
           if (currentTarget.classList.contains(eachValue)) {
             currentTarget.style.display = "flex";
-            document.getElementById("no-result-alert").style.display = "none";
+            alertBox.style.display = "none";
           } else {
             currentTarget.style.display = "none";
-            noVisible++;
-            if (noVisible === v.length) {
-              document.getElementById("no-result-alert").style.display =
-                "block";
-            }
           }
         }
       }
     }
+    setLoading(true);
   }
 
   // function handleToggleModal(e) {
@@ -137,7 +128,12 @@ const Gallery = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <video src={value.adthumb} muted playsInline></video>
+                    <video
+                      src={value.adthumb}
+                      muted
+                      playsInline
+                      autoPlay
+                    ></video>
                     {/* <img
                       src={value.previmg}
                       alt="pfxrichmedia"
