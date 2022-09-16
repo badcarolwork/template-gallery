@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import FilterBarComponent from "../../components/filterBar/filterBarComponent";
 import "./instream.scss";
@@ -8,43 +8,22 @@ const InStream = () => {
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
 
-  const filterDataGallery = (resData) => {
-    let keys = resData.values[0];
-    let newData = resData.values.slice(1, resData.values.length);
-
-    let formatted = [],
-      data = newData,
-      cols = keys,
-      l = cols.length;
-
-    for (var i = 0; i < data.length; i++) {
-      var d = data[i],
-        o = {};
-      for (var j = 0; j < l; j++) o[cols[j]] = d[j];
-      formatted.push(o);
-    }
-    handleSetGalleryData(formatted);
-  };
-
-  const handleSetGalleryData = (data) => {
+  const tidyDescription = (data) => {
     setGallery(data);
     setLoading(true);
 
-    tidyDescription();
-  };
+    setTimeout(() => {
+      const describes = document.querySelectorAll(".desc-box ul");
 
-  const tidyDescription = () => {
-    const describes = document.querySelectorAll(".desc-box ul");
-
-    describes.forEach((d) => {
-      if (typeof d.textContent !== "undefined" || typeof d.textContent !== "") {
-        if (d.textContent.includes("-")) {
-          const newContent = d.textContent.replace(/-/g, "<li>");
-          console.log(newContent);
-          d.innerHTML = newContent;
+      describes.forEach((d) => {
+        if (d.textContent !== "undefined" || d.textContent !== "") {
+          if (d.textContent.includes("-")) {
+            const newContent = d.textContent.replace(/-/g, "<li>");
+            d.innerHTML = newContent;
+          }
         }
-      }
-    });
+      });
+    }, 500);
   };
 
   function sorting(v) {
@@ -80,25 +59,41 @@ const InStream = () => {
     }
   }
 
-  useEffect(() => {
-    const getAPI = function () {
-      fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/instream?alt=json&key=" +
-          process.env.REACT_APP_API_KEY
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          filterDataGallery(res);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setTimeout(() => {
-            getAPI();
-          }, 1000);
-        });
-    };
-    getAPI();
+  const getAPI = useCallback(() => {
+    fetch(
+      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/instream?alt=json&key=" +
+        process.env.REACT_APP_API_KEY
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        let keys = res.values[0];
+        let newData = res.values.slice(1, res.values.length);
+
+        let formatted = [],
+          data = newData,
+          cols = keys,
+          l = cols.length;
+
+        for (var i = 0; i < data.length; i++) {
+          var d = data[i],
+            o = {};
+          for (var j = 0; j < l; j++) o[cols[j]] = d[j];
+          formatted.push(o);
+        }
+
+        tidyDescription(formatted);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setTimeout(() => {
+          getAPI();
+        }, 1000);
+      });
   }, []);
+
+  useEffect(() => {
+    getAPI();
+  }, [getAPI]);
 
   return (
     <div>
