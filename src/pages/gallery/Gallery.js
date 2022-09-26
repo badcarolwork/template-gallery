@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import FilterBarComponent from "../../components/filterBar/filterBarComponent";
 import Modal from "../../components/modal/Modal";
@@ -10,6 +10,24 @@ const Gallery = () => {
   let [color] = useState("#1E9A4B");
   const [toggleModal, setToggleModal] = useState(false);
   // let [selectedDatas, setSelectedDatas] = useState([]);
+
+  const tidyDescription = (data) => {
+    setGallery(data);
+    setLoading(true);
+
+    setTimeout(() => {
+      const describes = document.querySelectorAll(".card-body ul");
+
+      describes.forEach((d) => {
+        if (d.textContent !== "undefined" || d.textContent !== "") {
+          if (d.textContent.includes("~")) {
+            const newContent = d.textContent.replace(/~/g, "<li>");
+            d.innerHTML = newContent;
+          }
+        }
+      });
+    }, 500);
+  };
 
   const filterDataGallery = (resData) => {
     let keys = resData.values[0];
@@ -56,6 +74,42 @@ const Gallery = () => {
     setLoading(true);
   }
 
+  const getAPI = useCallback(() => {
+    fetch(
+      "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/dev_gallery?alt=json&key=" +
+        process.env.REACT_APP_API_KEY
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        let keys = res.values[0];
+        let newData = res.values.slice(1, res.values.length);
+
+        let formatted = [],
+          data = newData,
+          cols = keys,
+          l = cols.length;
+
+        for (var i = 0; i < data.length; i++) {
+          var d = data[i],
+            o = {};
+          for (var j = 0; j < l; j++) o[cols[j]] = d[j];
+          formatted.push(o);
+        }
+
+        tidyDescription(formatted);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setTimeout(() => {
+          getAPI();
+        }, 1000);
+      });
+  }, []);
+
+  useEffect(() => {
+    getAPI();
+  }, [getAPI]);
+
   // function handleToggleModal(e) {
   //   setToggleModal(true);
   //   var selectedTemplate = e.currentTarget.getAttribute("data");
@@ -67,26 +121,26 @@ const Gallery = () => {
   //   });
   // }
 
-  useEffect(() => {
-    const getAPI = function () {
-      fetch(
-        "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/dev_gallery?alt=json&key=" +
-          process.env.REACT_APP_API_KEY
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          filterDataGallery(res);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setTimeout(() => {
-            getAPI();
-          }, 1000);
-        });
-    };
+  // useEffect(() => {
+  //   const getAPI = function () {
+  //     fetch(
+  //       "https://sheets.googleapis.com/v4/spreadsheets/1kJl_ioUAK1umhl9oCHF8Oo7u698QdngllHuwerOFpIo/values/dev_gallery?alt=json&key=" +
+  //         process.env.REACT_APP_API_KEY
+  //     )
+  //       .then((res) => res.json())
+  //       .then((res) => {
+  //         filterDataGallery(res);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error:", error);
+  //         setTimeout(() => {
+  //           getAPI();
+  //         }, 1000);
+  //       });
+  //   };
 
-    getAPI();
-  }, []);
+  //   getAPI();
+  // }, []);
 
   return (
     <div>
@@ -144,7 +198,7 @@ const Gallery = () => {
 
                   <div className="card-body text-start ps-3 pe-3">
                     <h5 className="card-title">{value.tempname}</h5>
-                    <div className="card-text descText">{value.desc}</div>
+                    <ul className="ps-3">{value.desc}</ul>
                   </div>
                   <div className="card-text mt-auto pb-2 ps-3 pe-3">
                     {value.devicepc === "TRUE" ? (
