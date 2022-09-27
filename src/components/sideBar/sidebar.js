@@ -38,7 +38,7 @@ const Siderbar = () => {
 
         <div className="home-title d-flex text-white mb-4">
           <div className="align-self-center">
-            <div className="mb-2">Experience Creative Lab</div>
+            <div className="mb-2">Experience Lab</div>
           </div>
         </div>
 
