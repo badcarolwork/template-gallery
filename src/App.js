@@ -12,7 +12,7 @@ const App = () => {
   const [isMobileWidth, setMobileWidth] = useState(false);
 
   const handleWindowSizeChange = () => {
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     if (window.innerWidth <= 768) {
       setMobileWidth(true);
       document.getElementById("sidebar").classList.add("collapse");

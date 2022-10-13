@@ -26,6 +26,19 @@ function handleSelected(e) {
   }
   //   console.log(e.target.parentNode);
   e.target.parentNode.classList.add("active");
+
+  const sidebar = document.querySelector("#sidebar");
+  const rightContent = document.querySelector("main .content-right");
+  const isMobile = document.querySelector("main");
+
+  if(isMobile.classList.contains("mobile-view")){
+    if (sidebar.classList.contains("expand")) {
+      sidebar.classList.remove("expand");
+      rightContent.classList.remove("expand");
+      sidebar.classList.add("collapse");
+    } 
+  }
+ 
 }
 
 const Siderbar = () => {

@@ -98,16 +98,16 @@ const FilterBarComponent = (props) => {
 
   function handleToggleExpand(e) {
     const container = document.querySelector(".filter-container");
-
     if (container.classList.contains("expand")) {
       container.classList.remove("expand");
       Expandicon.classList.add("fa-angle-down");
       Expandicon.classList.remove("fa-angle-up");
+      
     } else {
       container.classList.add("expand");
       Expandicon.classList.remove("fa-angle-down");
       Expandicon.classList.add("fa-angle-up");
-    }
+    }   
   }
 
   function handleToggleSidebar(e) {
@@ -154,7 +154,7 @@ const FilterBarComponent = (props) => {
           </div>
 
           <div
-            className="col-md-12 col-12 mobile-filter"
+            className="col-md-12 col-4 mobile-filter"
             style={{ cursor: "pointer" }}
             onClick={handleToggleExpand}
           >
@@ -224,7 +224,7 @@ const FilterBarComponent = (props) => {
             <i id="toggle-icon" className="fas fa-angle-down ps-2"></i>
           </div>
 
-          <div className="col-md-2 col-12">
+          <div className="col-md-2 col-12 filter-column">
             <div>廣告格式: </div>
             <div className="filter-option-box">
               {filterdata.map((v, k) => {
@@ -246,7 +246,7 @@ const FilterBarComponent = (props) => {
             </div>
           </div>
 
-          <div className="col-md-2 col-12">
+          <div className="col-md-2 col-12 filter-column">
             <div>廣告用途: </div>
             <div className="filter-option-box">
               {filterdata.map((v, k) => {
@@ -268,7 +268,7 @@ const FilterBarComponent = (props) => {
             </div>
           </div>
 
-          <div className="col-md-2 col-12">
+          <div className="col-md-2 col-12 filter-column">
             <div>支援裝置: </div>
             <div className="filter-option-box">
               {filterdata.map((v, k) => {

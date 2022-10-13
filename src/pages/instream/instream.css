@@ -245,7 +245,7 @@ div.main.content-right.expand {
           margin-block-start: 0;
   -webkit-margin-after: 0;
           margin-block-end: 0;
-  padding: 0;
+  padding: 0 0 0 15px;
   margin: 0;
   position: relative;
 }

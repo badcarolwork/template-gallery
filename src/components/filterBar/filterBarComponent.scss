@@ -7,9 +7,29 @@
     width: calc(100% - 250px);
     padding:20px;
     background: linear-gradient(155deg, #62c7ed 10%, #1e9a4b 100%);
+    
+    .filter-column, .filter-option-box{
+      opacity:0;
+      transition: all 0.5s ease-in;
+    } 
 
     &.expand {
      background:#fff;
+
+     .filter-option-box {
+
+        &.brands{
+        flex-wrap: wrap;
+        
+        .filter-option {
+          width:auto;
+          margin:0.3rem 0.5rem;
+        }
+      }
+    }     
+      .filter-column, .filter-option-box{
+        opacity:1;
+      }
     }
 
     .mobile-logo{
@@ -18,10 +38,13 @@
   
       .logo{
         margin-top:-15px;
-        width:38%;
-        height:auto;
+        margin-left:20px;
+        width:36%;      
+        height:auto;  
       }
-    }    
+    } 
+    
+    
   }  
   
   .mobile-hide{
@@ -32,14 +55,17 @@
     font-size:1.3rem;
     display:block;
     margin-bottom:1.1rem;
-
   }
+
   .filter-container.expand{
     height:90%;
   }
   .mobile-filter{
     text-align: right;
+    margin-top: -7px;
   }
+
+  
 }
 
 .filter-container {
@@ -77,6 +103,7 @@
       margin-top: 10px;
     }
   }
+
   label {
     font-size: 14px;
     margin-bottom: 30px;
