@@ -29,24 +29,24 @@ const Gallery = () => {
     }, 500);
   };
 
-  const filterDataGallery = (resData) => {
-    let keys = resData.values[0];
-    let newData = resData.values.slice(1, resData.values.length);
+  // const filterDataGallery = (resData) => {
+  //   let keys = resData.values[0];
+  //   let newData = resData.values.slice(1, resData.values.length);
 
-    let formatted = [],
-      data = newData,
-      cols = keys,
-      l = cols.length;
-    for (var i = 0; i < data.length; i++) {
-      var d = data[i],
-        o = {};
-      for (var j = 0; j < l; j++) o[cols[j]] = d[j];
-      formatted.push(o);
-    }
-    setGallery(formatted);
+  //   let formatted = [],
+  //     data = newData,
+  //     cols = keys,
+  //     l = cols.length;
+  //   for (var i = 0; i < data.length; i++) {
+  //     var d = data[i],
+  //       o = {};
+  //     for (var j = 0; j < l; j++) o[cols[j]] = d[j];
+  //     formatted.push(o);
+  //   }
+  //   setGallery(formatted);
 
-    setLoading(true);
-  };
+  //   setLoading(true);
+  // };
 
   function sorting(v) {
     setLoading(false);

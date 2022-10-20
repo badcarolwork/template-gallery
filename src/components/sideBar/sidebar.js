@@ -31,14 +31,13 @@ function handleSelected(e) {
   const rightContent = document.querySelector("main .content-right");
   const isMobile = document.querySelector("main");
 
-  if(isMobile.classList.contains("mobile-view")){
+  if (isMobile.classList.contains("mobile-view")) {
     if (sidebar.classList.contains("expand")) {
       sidebar.classList.remove("expand");
       rightContent.classList.remove("expand");
       sidebar.classList.add("collapse");
-    } 
+    }
   }
- 
 }
 
 const Siderbar = () => {
@@ -46,7 +45,9 @@ const Siderbar = () => {
     <nav id="sidebar" className="sidebar">
       <div className="sidebar-content js-simplebar">
         <div className="navbar mb-4">
-          <img src={logo} className="logo" width="120" alt="logo" />
+          <CustomLink to="/">
+            <img src={logo} className="logo" width="120" alt="logo" />
+          </CustomLink>
         </div>
 
         <div className="home-title d-flex text-white mb-4">

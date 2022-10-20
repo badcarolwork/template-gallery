@@ -191,6 +191,11 @@ div.content-bottom.ad-filter {
     stroke-dashoffset: -3350;
   }
 }
+#pfxPlayer {
+  width: 100%;
+  ratio: 16/9;
+}
+
 main.mobile-view .main.content-right {
   width: 100%;
 }

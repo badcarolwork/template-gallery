@@ -192,6 +192,11 @@ div.content-bottom.ad-filter {
     stroke-dashoffset: -3350;
   }
 }
+#pfxPlayer {
+  width: 100%;
+  ratio: 16/9;
+}
+
 main.mobile-view .main.content-right {
   width: 100%;
 }
@@ -267,9 +272,6 @@ div.main.content-right.expand {
 }
 .modal-container .modal-body .modal-content table td, .modal-container .modal-body .modal-content table thead th {
   padding: 0.3rem;
-}
-.modal-container .modal-body .modal-content video {
-  max-width: 240px;
 }
 
 main.mobile-view .modal-container {

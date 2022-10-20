@@ -237,6 +237,9 @@ nav.sidebar .home-title {
   border-bottom: 1px solid;
   border-color: rgba(255, 255, 255, 0.5);
 }
+nav.sidebar .navbar li {
+  list-style: none;
+}
 nav.sidebar #nav-group {
   margin: 0;
   padding: 0;

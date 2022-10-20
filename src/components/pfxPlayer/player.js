@@ -25,7 +25,7 @@ const Player = ({ pli }) => {
     <div>
       <h3>Click to play the pre-roll interactive ad demo.</h3>
       <video
-        id="example_video_1"
+        id="pfxPlayer"
         className="video-js vjs-default-skin"
         controls
         preload="auto"
