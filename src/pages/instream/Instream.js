@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import FilterBarComponent from "../../components/filterBar/filterBarComponent";
+import Modal from "../../components/modal/Modal";
 import "./instream.scss";
 
 const InStream = () => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(false);
   let [color] = useState("#1E9A4B");
+  const [toggleModal, setToggleModal] = useState(false);
+  let [pli, setPli] = useState([]);
 
   const tidyDescription = (data) => {
     setGallery(data);
@@ -95,10 +98,16 @@ const InStream = () => {
     getAPI();
   }, [getAPI]);
 
+  function handleToggleModal(e) {
+    setToggleModal(true);
+    setPli(e.currentTarget.getAttribute("pli"));
+  }
+
   return (
     <div>
       <FilterBarComponent parent="instream" handleSorting={sorting} />
       <div className="content-bottom instream">
+        {toggleModal && <Modal toggleModal={setToggleModal} data={pli} />}
         {!loading ? (
           <ClipLoader color={color} size={180}></ClipLoader>
         ) : (
@@ -137,11 +146,19 @@ const InStream = () => {
                       <h5 className="card-title">{v.tempname}</h5>
                       <ul>{v.desc}</ul>
                       <br />
-                      <a href={v.demolink} target="_blank" rel="noreferrer">
+
+                      <button
+                        className="btn btn-primary mt-3 demo-btn"
+                        onClick={handleToggleModal}
+                        pli={v.demotag}
+                      >
+                        View and interact with Ad
+                      </button>
+                      {/* <a href={v.demolink} target="_blank" rel="noreferrer">
                         <button className="btn btn-primary mt-3 demo-btn">
                           View and interact with Ad
                         </button>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>

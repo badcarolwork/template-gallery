@@ -30,5 +30,6 @@ package-lock.json
 /src/components/sideBar/bk-sidebar.js
 /src/pages/showcase
 /src/pages/instreampractice
+/src/components/modal/Modal-copy.js
 
 
