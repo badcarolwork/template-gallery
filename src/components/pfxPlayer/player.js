@@ -11,28 +11,32 @@ const Player = ({ pli }) => {
     "https://www.performics.com.tw/static/js/videojs_5.vast.vpaid.min.js"
   );
 
-  const setup = {
-    plugins: {
-      vastClient: {
-        adTagUrl: pli,
-        adsCancelTimeout: 5000,
-        adsEnabled: true,
-      },
-    },
-  };
-
   return (
     <div>
       <h3>Click to play the pre-roll interactive ad demo.</h3>
+      <p>
+        Kindly relaunch the Demo Preview box if the interactive ad demo not
+        loading.
+      </p>
+
       <video
         id="pfxPlayer"
-        className="video-js vjs-default-skin"
+        className="video-js vjs-default-skin vjs-big-play-centered"
         controls
         preload="auto"
         width="640"
         height="360"
-        poster="https://www.performics.com.tw/static/media//poster-pfx.png"
-        data-setup={setup}
+        poster="https://www.performics.com.tw/static/media/poster-pfx.png"
+        data-setup={`{
+            "plugins": {
+            "vastClient": {
+              "adTagUrl": "${pli}",
+              "adCancelTimeout": 5000,
+              "adsEnabled": true,
+              "autoResize": true
+              }
+            }
+          }`}
       >
         <source
           src="https://www.performics.com.tw/static/media/Performics_3M.mp4"

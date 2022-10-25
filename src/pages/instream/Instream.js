@@ -108,6 +108,7 @@ const InStream = () => {
       <FilterBarComponent parent="instream" handleSorting={sorting} />
       <div className="content-bottom instream">
         {toggleModal && <Modal toggleModal={setToggleModal} data={pli} />}
+
         {!loading ? (
           <ClipLoader color={color} size={180}></ClipLoader>
         ) : (
