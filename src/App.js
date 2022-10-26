@@ -41,8 +41,6 @@ const App = () => {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/adfilter" element={<AdFilters />} />
           <Route path="/instream" element={<InStream />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/comingsoon" element={<ComingSoon />} />
         </Routes>
       </div>
     </main>
