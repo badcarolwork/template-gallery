@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Gallery from "./pages/gallery/Gallery";
-import About from "./pages/About";
 import Sidebar from "./components/sideBar/sidebar";
 import "./App.scss";
-import ComingSoon from "./pages/comingSoon";
 import AdFilters from "./pages/adFilter/AdFilters";
 import InStream from "./pages/instream/Instream";
 
