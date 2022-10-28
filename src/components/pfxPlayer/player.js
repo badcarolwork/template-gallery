@@ -7,9 +7,7 @@ const Player = ({ pli }) => {
     "https://www.performics.com.tw/static/js/videojs.vast.vpaid.min.css"
   );
   useScript("https://www.performics.com.tw/static/js/video.js");
-  useScript(
-    "https://www.performics.com.tw/static/js/videojs_5.vast.vpaid.min.js"
-  );
+  useScript("https://www.performics.com.tw/static/js/videojs_5.vast.vpaid.js");
 
   return (
     <div>
@@ -31,7 +29,7 @@ const Player = ({ pli }) => {
             "plugins": {
             "vastClient": {
               "adTagUrl": "${pli}",
-              "adCancelTimeout": 5000,
+              "adCancelTimeout": 10000,
               "adsEnabled": true,
               "autoResize": true
               }

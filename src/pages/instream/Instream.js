@@ -139,7 +139,7 @@ const InStream = () => {
                       </button>
                       {/* <img src={v.previmg} /> */}
 
-                      <video muted autoPlay playsInline loop>
+                      <video muted autoPlay playsInline>
                         <source src={v.prevvid} type="video/mp4" />
                       </video>
                     </div>
