@@ -1,43 +1,40 @@
-import useScript from "../../hooks/useScript";
-import useStylesheet from "../../hooks/useStylesheet";
+import videojs from "video.js";
+import "videojs-contrib-ads";
+import "videojs-ima";
 
 const Player = ({ pli }) => {
-  useStylesheet("https://www.performics.com.tw/static/js/video-js.css");
-  useStylesheet(
-    "https://www.performics.com.tw/static/js/videojs.vast.vpaid.min.css"
-  );
-  useScript("https://www.performics.com.tw/static/js/video.js");
-  useScript("https://www.performics.com.tw/static/js/videojs_5.vast.vpaid.js");
+  const setTag = () => {
+    var player = videojs("content_video");
+    var imaOptions = {
+      id: "content_video",
+      adTagUrl: pli,
+    };
 
-  return (
-    <div>
-      <h3>Click to play the pre-roll interactive ad demo.</h3>
-      <p>
-        Kindly relaunch the Demo Preview box if the interactive ad demo not
-        loading.
-      </p>
+    player.ima(imaOptions);
+  };
 
+  const VideoPlayer = () => {
+    return (
       <video
-        id="pfxPlayer"
-        className="video-js vjs-default-skin vjs-big-play-centered"
+        id="content_video"
+        className="video-js vjs-default-skin"
         controls
         preload="auto"
         width="640"
         height="360"
-        poster="https://www.performics.com.tw/static/media/poster-pfx.png"
-        data-setup={`{
-            "plugins": {
-            "vastClient": {
-              "adTagUrl": "${pli}"
-              }
-            }
-          }`}
       >
         <source
           src="https://www.performics.com.tw/static/media/Performics_3M.mp4"
           type="video/mp4"
-        />
+        ></source>
       </video>
+    );
+  };
+
+  return (
+    <div>
+      <h3>Click to play the pre-roll interactive ad demo.</h3>
+      <VideoPlayer />
     </div>
   );
 };

@@ -5,11 +5,11 @@ const useScript = (url) => {
     const script = document.createElement("script");
     script.src = url;
     // script.async = true;
-    script.setAttribute("defer", "");
-    document.head.appendChild(script);
+    // script.setAttribute("defer", "");
+    document.body.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      document.body.removeChild(script);
     };
   }, [url]);
 };
