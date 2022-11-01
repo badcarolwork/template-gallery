@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import "./App.scss";
 import Gallery from "./pages/gallery/Gallery";
 import Sidebar from "./components/sideBar/sidebar";
-import "./App.scss";
 import AdFilters from "./pages/adFilter/AdFilters";
 import InStream from "./pages/instream/Instream";
 
@@ -24,7 +24,6 @@ const App = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
-    handleWindowSizeChange();
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
@@ -35,7 +34,7 @@ const App = () => {
       <Sidebar />
       <div className="main content-right">
         <Routes>
-          <Route path="/" className="active" element={<Gallery />} />
+          <Route path="" element={<Gallery />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/adfilter" element={<AdFilters />} />
           <Route path="/instream" element={<InStream />} />

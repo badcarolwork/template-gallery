@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function CustomLink({ to, children, ...props }) {
   var pathname = window.location.pathname;
 
-  if (pathname === "/") {
+  if (pathname === "" || pathname === "/") {
     pathname = "/gallery";
   }
 

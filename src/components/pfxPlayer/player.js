@@ -28,10 +28,7 @@ const Player = ({ pli }) => {
         data-setup={`{
             "plugins": {
             "vastClient": {
-              "adTagUrl": "${pli}",
-              "adCancelTimeout": 10000,
-              "adsEnabled": true,
-              "autoResize": true
+              "adTagUrl": "${pli}"
               }
             }
           }`}
