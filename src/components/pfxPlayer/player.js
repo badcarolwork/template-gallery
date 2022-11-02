@@ -1,38 +1,56 @@
-import { useEffect } from "react";
+import { useEffect, useRef} from "react";
 import videojs from 'video.js';
 import 'videojs-contrib-ads';
 import 'videojs-ima';
 
-const Player = ({ pli }) => {
-  useEffect(() => {
-    var videoOptions = {
-      controls: true,
-      sources: [{
-          src: 'https://www.performics.com.tw/static/media/Performics_3M.mp4',
-          type: 'video/mp4',
-      }]
-    };
-    
-    var player = videojs('pfxPlayer', videoOptions);
-    
-    var imaOptions = {
-      adTagUrl: pli
-    };
-    
-    player.ima(imaOptions);
-  });
-  
+const Player = (props) => {
 
-  return (<video
-    id="pfxPlayer"
-    className="video-js vjs-default-skin vjs-big-play-centered"
-    controls
-    preload="auto"
-    width="640"
-    height="360"
-    poster="https://www.performics.com.tw/static/media/poster-pfx.png"
-  >
-  </video>)
+  const videoRef = useRef(null);
+  const playerRef = useRef(null);
+  const {pli, options, onReady } = props;
+
+  useEffect(() => {
+    
+    // Make sure Video.js player is only initialized once
+    if (!playerRef.current) {
+      const videoElement = videoRef.current;
+
+      if (!videoElement) return;
+
+      const player = playerRef.current = videojs(videoElement, options, () => {
+        videojs.log('player is ready');
+        onReady && onReady(player);
+       
+      });
+      var imaOptions = {
+        adTagUrl: pli
+      };
+      
+      player.ima(imaOptions);
+
+    // You could update an existing player in the `else` block here
+    // on prop change, for example:
+    } 
+  }, [options, videoRef, onReady, pli]);
+
+  // Dispose the Video.js player when the functional component unmounts
+  useEffect(() => {
+    const player = playerRef.current;
+
+    return () => {
+      if (player) {
+        player.dispose();
+        playerRef.current = null;
+      }
+    };
+  }, [playerRef]);
+
+  return (
+    <div data-vjs-player>
+      <video ref={videoRef} className='video-js vjs-big-play-centered' />
+    </div>
+  );
 }
+
 
 export default Player;

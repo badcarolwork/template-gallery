@@ -1,7 +1,26 @@
+import {  useRef} from "react";
 import "./modal.scss";
 import Player from "../pfxPlayer/player";
 
 const Modal = ({ toggleModal, data }) => {
+
+  const playerRef = useRef(null);
+  const videoJsOptions = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [{
+      src: 'https://www.performics.com.tw/static/media/Performics_3M.mp4',
+      type: 'video/mp4'
+    }]
+  };
+
+  const handlePlayerReady = (player) => {
+    playerRef.current = player;
+  };
+
+
   return (
     <div className="modal-container">
       <div
@@ -14,7 +33,7 @@ const Modal = ({ toggleModal, data }) => {
       </div>
       <div className="modal-body">
         <div className="modal-content mt-3">
-          <Player pli={data} />
+          <Player pli={data} options={videoJsOptions} onReady={handlePlayerReady} />
         </div>
       </div>
     </div>
