@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 import videojs from 'video.js';
 import 'videojs-contrib-ads';
 import 'videojs-ima';
