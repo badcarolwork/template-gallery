@@ -23,7 +23,9 @@ const App = () => {
   };
 
   useEffect(() => {
+    handleWindowSizeChange();
     window.addEventListener("resize", handleWindowSizeChange);
+    
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };

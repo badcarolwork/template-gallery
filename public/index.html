@@ -23,6 +23,10 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/node_modules/video.js/dist/video-js.min.css">
+  <link rel="stylesheet"
+    href="https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.css">
+  <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/dist/videojs.ima.css">
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -37,7 +41,8 @@
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src=" https://www.googletagmanager.com/ns.html?id=GTM-54NWVF3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src=" https://www.googletagmanager.com/ns.html?id=GTM-54NWVF3" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
@@ -51,6 +56,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
 </body>
 
 </html>
