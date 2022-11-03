@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/video-js.min.css" />
+    <link rel="stylesheet" href="./css/videojs.ads.css" />
+    <link rel="stylesheet" href="./css/videojs.ima.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+            /* make scrollbar transparent */
+        }
+
+        img {
+            width: 95%;
+            height: auto;
+        }
+
+        .mobile-view {
+            min-width: 320px;
+            width: 100%;
+            margin: auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        #footer {
+            width: 100%;
+            margin-top: 30px;
+            font-size: 10px;
+            color: #fff;
+            background-color: #071F35;
+            padding: 20px 10px;
+            text-align: center;
+            margin-left: -15px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #62c7ed 0%, #1e9a4b 100%);
+            margin: 0;
+            width: 100%;
+            height: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 20px 10px;
+            z-index: 999;
+            color: #fff;
+        }
+
+        #contentBody {
+            padding-top: 80px;
+        }
+
+        #content_video {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-view">
+        <header>
+            Performics Taiwan - Interactive Video Ad Creative
+        </header>
+
+        <div id="contentBody">
+            <h3>Brand: Samsung</h3>
+            <span>Click and play the interactive video ad.</span>
+            <br /><br />
+            <video id="content_video" class="video-js vjs-default-skin" poster="./media/poster-pfx.png" controls preload="auto" width="640" height="360">
+                <source src="./media/Performics_3M.mp4" type="video/mp4">
+                </source>
+            </video>
+        </div>
+
+        <div id="footer">
+            Copyright © Performics Taiwan
+        </div>
+    </div>
+
+
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="./js/video.min.js"></script>
+    <script src="./js/videojs.ads.min.js"></script>
+    <script src="./js/videojs.ima.js"></script>
+    <script>
+        var player = videojs('content_video');
+
+        var options = {
+            id: 'content_video',
+            adTagUrl: 'https://bs.serving-sys.com/Serving/adServer.bs?c=23&cn=display&pli=1078525949&gdpr=${GDPR}&gdpr_consent=${GDPR_CONSENT_68}&ord=[timestamp]'
+        };
+
+        player.ima(options);
+
+        // Remove controls from the player on iPad to stop native controls from stealing
+        // our click
+        var contentPlayer = document.getElementById('content_video_html5_api');
+        if ((navigator.userAgent.match(/iPad/i) ||
+            navigator.userAgent.match(/Android/i)) &&
+            contentPlayer.hasAttribute('controls')) {
+            contentPlayer.removeAttribute('controls');
+        }
+
+        // Initialize the ad container when the video player is clicked, but only the
+        // first time it's clicked.
+        var initAdDisplayContainer = function () {
+            player.ima.initializeAdDisplayContainer();
+            wrapperDiv.removeEventListener(startEvent, initAdDisplayContainer);
+        }
+
+        var startEvent = 'click';
+        if (navigator.userAgent.match(/iPhone/i) ||
+            navigator.userAgent.match(/iPad/i) ||
+            navigator.userAgent.match(/Android/i)) {
+            startEvent = 'touchend';
+        }
+
+        var wrapperDiv = document.getElementById('content_video');
+        wrapperDiv.addEventListener(startEvent, initAdDisplayContainer);
+    </script>
+
+</body>
+
+</html>
