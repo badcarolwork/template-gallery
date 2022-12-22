@@ -6,15 +6,15 @@
 		<changefreq>always</changefreq>
 	</url>
 	<url>
-		<loc>https://www.performics.com.tw/gallery</loc>
+		<loc>https://www.performics.com.tw/#/gallery</loc>
 		<lastmod>2022-10-28</lastmod>
 	</url>
 	<url>
-		<loc>https://www.performics.com.tw/adfilter</loc>
+		<loc>https://www.performics.com.tw/#/adfilter</loc>
 		<lastmod>2022-10-28</lastmod>
 	</url>
 	<url>
-		<loc>https://www.performics.com.tw/instream</loc>
+		<loc>https://www.performics.com.tw/#/instream</loc>
 		<lastmod>2022-10-28</lastmod>
 	</url>
 </urlset>

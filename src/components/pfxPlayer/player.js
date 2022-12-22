@@ -45,6 +45,7 @@ const Player = (props) => {
   return (
     <div>
       <h2>Interactive Video Ad Showcase</h2>
+      <p>For better experience, kindly preview the showcase on desktop.</p>
       <div data-vjs-player>
         <video
           ref={videoRef}
