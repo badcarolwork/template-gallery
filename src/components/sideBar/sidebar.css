@@ -40,10 +40,8 @@ a {
 
 h5 {
   font-size: 1rem;
-  -webkit-margin-before: 1rem;
-          margin-block-start: 1rem;
-  -webkit-margin-after: 1rem;
-          margin-block-end: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 .dFlex {
@@ -159,23 +157,7 @@ div.content-bottom.ad-filter {
   fill: transparent;
   stroke-dashoffset: 0;
   stroke-dasharray: 3350;
-  -webkit-animation: lion-animation 5s 5;
-          animation: lion-animation 5s 5;
-}
-
-@-webkit-keyframes lion-animation {
-  0% {
-    stroke-dashoffset: -3350;
-  }
-  35% {
-    stroke-dashoffset: 0;
-  }
-  65% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -3350;
-  }
+  animation: lion-animation 5s 5;
 }
 
 @keyframes lion-animation {

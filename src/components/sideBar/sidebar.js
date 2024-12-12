@@ -65,10 +65,10 @@ const Siderbar = () => {
             廣告特效 <br />
             PM AD Filter
           </CustomLink>
-          <CustomLink to="/instream">
+          {/* <CustomLink to="/instream">
             互動影音廣告 <br />
             Interactive In-stream Video
-          </CustomLink>
+          </CustomLink> */}
         </ul>
         <footer>
           <span className="fw-light">© Performics Taiwan | Privacy Policy</span>
