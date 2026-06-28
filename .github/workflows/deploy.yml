@@ -3,7 +3,7 @@ name: Deploy React App
 on:
   push:
     branches:
-      - main
+      - heroku
 
 permissions:
   contents: read
