@@ -19,8 +19,7 @@
     "web-vitals": "^1.1.2"
   },
   "engines": {
-    "node": "16.0.0",
-    "npm": "7.4.0"
+    "node": "22.x"
   },
   "scripts": {
     "predeploy": "npm run build ",
